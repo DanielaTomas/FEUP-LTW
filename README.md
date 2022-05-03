@@ -2,7 +2,7 @@
 
 ## Uml diagram
 
-![](database.jpg)
+![](database.png)
 
 #### Project developed by
 * Daniela Tomás - up202004946
