@@ -12,7 +12,7 @@ drop table if exists Comment;
 drop table if exists Review;
 drop table if exists Orders;
 drop table if exists Administrator;
-drop table if exists User;
+drop table if exists Users;
 drop table if exists Restaurant;
 
 -- Create Tables --
@@ -26,7 +26,7 @@ create table Restaurant(
                                                  ON UPDATE CASCADE  
 );
 
-create table User(
+create table Users(
     UserId int PRIMARY KEY,
     FirstLastName varchar(60) NOT NULL,
     Username varchar(50) NOT NULL UNIQUE,
