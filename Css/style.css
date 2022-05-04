@@ -1,0 +1,55 @@
+main a {
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px #333;
+  font-size: 24px;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+body > header a {
+  color: white;
+  text-decoration: none;
+}
+
+body > header {
+  padding: 1em;
+  background-color: #438D80;
+  color: white;
+  text-align: center;
+}
+
+#restaurants {
+  display: grid;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+#restaurants article {
+  display: grid;
+  justify-content: center;
+  width: 200px;
+}
+
+#restaurants article * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+footer {
+  padding: 1em;
+  margin-top:1em;
+  background-color: #438D80;
+  color: white;
+}
+
+img{
+  padding: 5px;
+}
+
+
+main > h2 {
+  text-align: center;
+}
