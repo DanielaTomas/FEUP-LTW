@@ -12,7 +12,7 @@
   <body>
 
     <header>
-      <h1><a href="/">Restaurant Website</a></h1>
+      <h1><a href="/">Restaurants Website</a></h1>
       <?php drawLoginForm() ?>
     </header>
   
