@@ -1,6 +1,25 @@
 <?php declare(strict_types = 1); ?>
 
-<?php function drawHeader() { ?>
+<?php function drawHeader1() { ?>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Restaurants Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="Css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <h1><a href="index.php">Restaurants Website</a></h1>
+      <?php drawLoginForm() ?>
+    </header>
+  
+    <main>
+<?php } ?>
+
+<?php function drawHeader2() { ?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -12,7 +31,7 @@
   <body>
 
     <header>
-      <h1><a href="/">Restaurants Website</a></h1>
+      <h1><a href="../index.php">Restaurants Website</a></h1>
       <?php drawLoginForm() ?>
     </header>
   

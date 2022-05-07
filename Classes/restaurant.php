@@ -1,25 +1,19 @@
 <?php
-  declare(strict_types = 1);
 
-  require_once('../Templates/common.tpl.php');
-  require_once('../Templates/restaurant.tpl.php');
+declare(strict_types=1);
 
-  $menus = array(
-    array('id' => 1, 'name' => 'Appetizer'),
-    array('id' => 2, 'name' => 'Soup'),
-    array('id' => 3, 'name' => 'Meat'),
-  );
+require_once('../Database/connection.db.php');
+require_once('../Database/restaurant.db.php');
 
-  $dishes = array(
-    array('id' => 1, 'name' => 'Dish Name 1', 'menuId' => 1),
-    array('id' => 2, 'name' => 'Dish Name 2', 'menuId' => 1),
-    array('id' => 3, 'name' => 'Dish Name 3', 'menuId' => 2),
-    array('id' => 4, 'name' => 'Dish Name 4', 'menuId' => 2),
-    array('id' => 5, 'name' => 'Dish Name 5', 'menuId' => 3),
-    array('id' => 6, 'name' => 'Dish Name 6', 'menuId' => 3)
-  );
+require_once('../Templates/common.tpl.php');
+require_once('../Templates/restaurant.tpl.php');
 
-  drawHeader();
-  drawRestaurant('Restaurant Name', $menus, $dishes);
-  drawFooter();
-?>
+$db = getDatabaseConnection('sqlite:../Database/database.db');
+
+$restaurant = getRestaurant($db, intval($_GET['id']));
+$menus = getRestaurantMenus($db, intval($_GET['id']));
+$dishes = getMenuDishes($db, intval($_GET['id']));
+
+drawHeader2();
+drawRestaurant($restaurant['name'], $menus, $dishes);
+drawFooter();
