@@ -1,16 +1,17 @@
 <?php
   declare(strict_types = 1);
 
+  require_once('Database/connection.db.php');
+  require_once('Database/restaurant.db.php');
+
   require_once('Templates/common.tpl.php');
   require_once('Templates/restaurant.tpl.php');
 
-  $restaurants = array(
-    array('id' => 1, 'name' => 'Restaurant Name 1'),
-    array('id' => 2, 'name' => 'Restaurant Name 2'),
-    array('id' => 3, 'name' => 'Restaurant Name 3')
-  );
+  $db = getDatabaseConnection('sqlite:Database/database.db');
 
-  drawHeader();
+  $restaurants = getRestaurants($db, 10);
+
+  drawHeader1();
   drawRestaurants($restaurants);
   drawFooter(); 
 
