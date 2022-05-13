@@ -26,9 +26,20 @@ create table Restaurant(
                                                  ON UPDATE CASCADE  
 );
 
+create table Users(
+    UserId int PRIMARY KEY,
+    FirstLastName varchar(60) NOT NULL,
+    Username varchar(50) NOT NULL UNIQUE,
+    Password varchar(40) NOT NULL,
+    UserAddress varchar(70),
+    PhoneNumber varchar(24),
+    RestaurantId int NOT NULL references Restaurant ON DELETE CASCADE
+                                                    ON UPDATE CASCADE 
+);
+
 create table Administrator(
-    UserId int PRIMARY KEY references User ON DELETE CASCADE                                                                                
-                                           ON UPDATE CASCADE
+    UserId int PRIMARY KEY references Users ON DELETE CASCADE                                                                                
+                                            ON UPDATE CASCADE
 );
 
 create table Orders(
@@ -36,8 +47,8 @@ create table Orders(
     OrderStatus varchar(60) NOT NULL,
     RestaurantId int NOT NULL references Restaurant ON DELETE CASCADE
                                                     ON UPDATE CASCADE,  
-    UserId int NOT NULL references User ON DELETE CASCADE
-                                        ON UPDATE CASCADE                                                                                
+    UserId int NOT NULL references Users ON DELETE CASCADE
+                                         ON UPDATE CASCADE                                                                                
 );
 
 create table Review(

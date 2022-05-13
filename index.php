@@ -7,11 +7,11 @@
   require_once('Templates/common.tpl.php');
   require_once('Templates/restaurant.tpl.php');
 
-  $db = getDatabaseConnection('sqlite:Database/database.db');
+  $db = getDatabaseConnection();
 
   $restaurants = getRestaurants($db, 10);
 
-  drawHeader1();
+  drawHeader();
   drawRestaurants($restaurants);
   drawFooter(); 
 

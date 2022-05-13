@@ -6,7 +6,7 @@
     <?php foreach($restaurants as $restaurant) { ?> 
       <article>
         <img src="https://picsum.photos/200?<?=$restaurant['id']?>">
-        <a href="Classes/restaurant.php?id=<?=$restaurant['id']?>"><?=$restaurant['name']?></a>
+        <a href="restaurant.php?id=<?=$restaurant['id']?>"><?=$restaurant['name']?></a>
       </article>
     <?php } ?>
   </section>
@@ -19,8 +19,8 @@
     <article>
       <h3><?=$menu['name']?></h3>
       <?php foreach ($dishes as $dish) { ?>
-       <?php if($dish['menuId'] == $menu['id']) { ?>
-        <a href="../Classes/dishOrder.php?id=<?=$dish['id']?>"><?=$dish['name']?></a>
+       <?php if($dish['menuId'] === $menu['id']) { ?>
+        <a href="dishOrder.php?id=<?=$dish['id']?>"><?=$dish['name']?></a>
         <img src="https://picsum.photos/200?<?=$dish['id']?>">
        <?php } ?>
       <?php } ?>

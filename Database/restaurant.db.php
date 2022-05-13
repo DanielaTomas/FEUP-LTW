@@ -32,7 +32,7 @@ function getRestaurant(PDO $db, int $id): array
 
 	return array(
 		'id' => $restaurant['RestaurantId'],
-		'name' => $restaurant['RestaurantName'],
+		'name' => $restaurant['RestaurantName']
 	);
 }
 
