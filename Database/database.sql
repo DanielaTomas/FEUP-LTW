@@ -21,9 +21,7 @@ create table Restaurant(
     RestaurantId int PRIMARY KEY,
     RestaurantName varchar(80) NOT NULL,
     RestaurantAddress varchar(70),
-    Category varchar(30),
-    UserId int NOT NULL references Administrator ON DELETE CASCADE
-                                                 ON UPDATE CASCADE  
+    Category varchar(30)
 );
 
 create table Users(
@@ -41,6 +39,9 @@ create table Administrator(
     UserId int PRIMARY KEY references Users ON DELETE CASCADE                                                                                
                                             ON UPDATE CASCADE
 );
+
+ALTER TABLE Restaurant
+ADD UserId int CONSTRAINT userid REFERENCES Administrator ON DELETE CASCADE ON UPDATE CASCADE;                                                                         
 
 create table Orders(
     OrderId int PRIMARY KEY,
@@ -146,52 +147,91 @@ insert into Menu(MenuId,MenuType) values (06,"DESSERT");
 
 -- Dishes --
 
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (001,"Picanha",25,"Prato de picanha com arroz e/ou batata. Molho picante se pretender.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (002,"Salmão Grelhado",15,"Salmão grelhado com batata a murro.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (003,"Caldo verde",2,"Sopa constituída por couve galega, batata, cebola e duas rodelas de chouriço.",02);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (004,"Croquetes",0.9,"Bolinho recheado com diversos tipos de carne.",01);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (005,"Gelado de chocolate",2.5,"Chocolate em forma de bola gelada.",06);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (006,"Costoletas de borrego grealhads com arroz e batata frita.",8.5,"Costoletas de borrego grealhadas com arroz e batata frita.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (007,"Sardinha assadas com salada mista",7.9,"Sardinha assadas com salada mista.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (008,"Peixe espada grelhado",9,"Peixe espada grelhado. Pode pedir acompanhante.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (009,"Carapaus grelhados com legumes",9,"Carapaus grelhados com legumes.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (010,"Arroz doce",2.5,"Arooz  com sabor adocicado.",06);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (011,"Mousse de chocolate",2.5,"Chocolate em forma de papa.",06);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (012,"Leite creme",2.5,"Leite em forma de iogurte com açúcar torrado.",06);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (013,"Sopa de agrião",1.4,"Sopa de agrião.",02);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (014,"Coca-Cola 33cl",1,"Coca-Cola numa lata de 33cl.",05);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (015,"Pepsi Max 33cl",1,"Pepsi Max numa lata de 33cl.",05);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (016,"Vinho Branco 0.375",3.5,"Vinho Branco num jarro de 0.375.",05);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (017,"Frango assado na grelha",7.9,"Frango assado com arroz e/ou batata.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (018,"Iscas de porco à Portuguesa",8.9,"Iscas de porco à Portuguesa com batata cozida.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (019,"Dourada grelhada com legumes",9,"Dourada grelhada com legumes.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (020,"Queijinho de ovelha",4,"Cubos de queijo de ovelha.",01);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (021,"Melão com presunto",5,"Melão com presunto.",01);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (022,"Azeitonas à Dom Pedro",5,"Azeitonas à Dom Pedro.",01);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (023,"Rodelas de salpicão",3,"Rodelas de salpicão.",01);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (024,"Ameijoas à Bulhão Pato",12.5,"Ameijoas com um gosto mais apetitoso.",01);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (025,"Sopa de legumes",1.2,"Sopa com legumes.",02);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (026,"Sopa do Mar",2,"Sopa com peixe, camarões cozidos e ameijoas.",02);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (027,"Creme de espargos",9.,"Sopa com espargos.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (028,"Bacalhau à lagareiro",10.5,"Bacalhau com legumes, batata a murro, cebola e pimento.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (029,"Bacalhau à Brás",3.5,"Bacalhau com batatas fritas, ovo, azeitonas, salsa e uma folha de louro",05);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (030,"Vinho Branco 0.75",7.5,"Vinho Branco num jarro de 0.75.",05);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (031,"Vinho Tinto 0.375",3.5,"Vinho Tinto num jarro de 0.375.",05);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (032,"Vinho Tinto 0.75",7.5,"Vinho Tinto num jarro de 0.75.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (033,"Leitão assado à moda da bairrada",9.5,"Leitão assado com batata frita de rodela, legumes e, se pretender, molho picante",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (034,"Rosbeef beurre maître d'hôtel",13,"Bife temperado com manteiga.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (035,"Polvo à Lagareiro",13,"Polvo com batata a murro, bocados de alho francês e salsa.",04);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (036,"Filé Mignon",19.99,"Carne bovina fatiada com batata.",03);
-insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (037,"Canja de galinha",2,"Canja com massa, frango, ovo, cenoura e salpicão.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (001,"Azeitonas à Dom Pedro",5,"Azeitonas à Dom Pedro.",01);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (002,"Croquetes",0.9,"Bolinho recheado com diversos tipos de carne.",01);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (003,"Melão com presunto",5,"Melão com presunto.",01);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (004,"Queijinho de ovelha",4,"Cubos de queijo de ovelha.",01);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (005,"Rodelas de salpicão",3,"Rodelas de salpicão.",01);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (006,"Caldo verde",2,"Sopa constituída por couve galega, batata, cebola e duas rodelas de chouriço.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (007,"Canja de galinha",2,"Canja com massa, frango, ovo, cenoura e salpicão.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (008,"Creme de espargos",9.,"Sopa com espargos.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (009,"Sopa de agrião",1.4,"Sopa de agrião.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (010,"Sopa de legumes",1.2,"Sopa com legumes.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (011,"Sopa do mar",2,"Sopa com peixe, camarões cozidos e ameijoas.",02);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (012,"Costoletas de borrego grealhadas",8.5,"Costoletas de borrego grealhadas com arroz e batata frita.",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (013,"Filé mignon",19.99,"Carne bovina fatiada com batata.",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (014,"Frango assado na grelha",7.9,"Frango assado com arroz e/ou batata.",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (015,"Iscas de porco à portuguesa",8.9,"Iscas de porco à portuguesa com batata cozida.",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (016,"Leitão assado à moda da bairrada",9.5,"Leitão assado com batata frita de rodela, legumes e, se pretender, molho picante",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (017,"Picanha",25,"Prato de picanha com arroz e/ou batata. Molho picante se pretender.",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (018,"Rosbeef beurre maître d'hôtel",13,"Bife temperado com manteiga.",03);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (019,"Ameijoas à Bulhão Pato",12.5,"Ameijoas com um gosto mais apetitoso.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (020,"Bacalhau à brás",3.5,"Bacalhau com batatas fritas, ovo, azeitonas, salsa e uma folha de louro",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (021,"Bacalhau à lagareiro",10.5,"Bacalhau com legumes, batata a murro, cebola e pimento.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (022,"Carapaus grelhados com legumes",9,"Carapaus grelhados com legumes.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (023,"Dourada grelhada com legumes",9,"Dourada grelhada com legumes.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (024,"Peixe espada grelhado",9,"Peixe espada grelhado. Pode pedir acompanhante.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (025,"Polvo à lagareiro",13,"Polvo com batata a murro, bocados de alho francês e salsa.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (026,"Salmão grelhado",15,"Salmão grelhado com batata a murro.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (027,"Sardinhas assadas com salada mista",7.9,"Sardinhas assadas com salada mista.",04);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (028,"Coca-cola 33cl",1,"Coca-cola numa lata de 33cl.",05);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (029,"Pepsi max 33cl",1,"Pepsi max numa lata de 33cl.",05);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (030,"Vinho branco 0.375",3.5,"Vinho branco num jarro de 0.375.",05);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (031,"Vinho branco 0.75",7.5,"Vinho branco num jarro de 0.75.",05);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (032,"Vinho tinto 0.375",3.5,"Vinho tinto num jarro de 0.375.",05);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (033,"Vinho tinto 0.75",7.5,"Vinho tinto num jarro de 0.75.",05);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (034,"Arroz doce",2.5,"Arooz  com sabor adocicado.",06);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (035,"Gelado de chocolate",2.5,"Chocolate em forma de bola gelada.",06);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (036,"Leite creme",2.5,"Leite em forma de iogurte com açúcar torrado.",06);
+insert into Dish(DishId,DishName,Price,DishDescription,MenuId) values (037,"Mousse de chocolate",2.5,"Chocolate em forma de papa.",06);
 
 -- RestaurantMenu --
 
-insert into RestaurantMenu(RestaurantId,MenuId) values (001,01);
-insert into RestaurantMenu(RestaurantId,MenuId) values (001,02);
 insert into RestaurantMenu(RestaurantId,MenuId) values (001,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (001,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (001,05);
 insert into RestaurantMenu(RestaurantId,MenuId) values (002,01);
-insert into RestaurantMenu(RestaurantId,MenuId) values (002,02);
 insert into RestaurantMenu(RestaurantId,MenuId) values (002,03);
 insert into RestaurantMenu(RestaurantId,MenuId) values (002,04);
 insert into RestaurantMenu(RestaurantId,MenuId) values (002,05);
-insert into RestaurantMenu(RestaurantId,MenuId) values (002,06);
+insert into RestaurantMenu(RestaurantId,MenuId) values (003,02);
+insert into RestaurantMenu(RestaurantId,MenuId) values (003,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (003,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (003,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (004,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (004,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (004,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (004,06);
+insert into RestaurantMenu(RestaurantId,MenuId) values (005,01);
+insert into RestaurantMenu(RestaurantId,MenuId) values (005,02);
+insert into RestaurantMenu(RestaurantId,MenuId) values (005,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (005,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (005,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (006,01);
+insert into RestaurantMenu(RestaurantId,MenuId) values (006,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (006,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (006,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (006,06);
+insert into RestaurantMenu(RestaurantId,MenuId) values (007,02);
+insert into RestaurantMenu(RestaurantId,MenuId) values (007,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (007,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (007,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (007,06);
+insert into RestaurantMenu(RestaurantId,MenuId) values (008,01);
+insert into RestaurantMenu(RestaurantId,MenuId) values (008,02);
+insert into RestaurantMenu(RestaurantId,MenuId) values (008,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (008,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (008,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (008,06);
+insert into RestaurantMenu(RestaurantId,MenuId) values (009,01);
+insert into RestaurantMenu(RestaurantId,MenuId) values (009,02);
+insert into RestaurantMenu(RestaurantId,MenuId) values (009,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (009,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (009,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (009,06);
+insert into RestaurantMenu(RestaurantId,MenuId) values (010,01);
+insert into RestaurantMenu(RestaurantId,MenuId) values (010,02);
+insert into RestaurantMenu(RestaurantId,MenuId) values (010,03);
+insert into RestaurantMenu(RestaurantId,MenuId) values (010,04);
+insert into RestaurantMenu(RestaurantId,MenuId) values (010,05);
+insert into RestaurantMenu(RestaurantId,MenuId) values (010,06);

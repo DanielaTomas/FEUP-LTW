@@ -18,12 +18,14 @@
     <?php foreach ($menus as $menu) { ?>
     <article>
       <h3><?=$menu['name']?></h3>
-      <?php foreach ($dishes as $dish) { ?>
-       <?php if($dish['menuId'] === $menu['id']) { ?>
+      <?php for($i = 0; $i < count($dishes); $i++){ ?>
+      <?php foreach ($dishes[$i] as $dish) { ?>
+       <?php if($dish['menuId'] == $menu['id']) { ?>
         <a href="dishOrder.php?id=<?=$dish['id']?>"><?=$dish['name']?></a>
         <img src="https://picsum.photos/200?<?=$dish['id']?>">
        <?php } ?>
       <?php } ?>
+       <?php } ?>
     </article>
     <?php } ?>
    </section> 

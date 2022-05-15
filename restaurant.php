@@ -12,8 +12,11 @@ $db = getDatabaseConnection();
 
 $restaurant = getRestaurant($db, intval($_GET['id']));
 $menus = getRestaurantMenus($db, intval($_GET['id']));
-$dishes = getMenuDishes($db, intval($_GET['id']));
-
 drawHeader();
+$dishes=array();
+$aux = 0;
+for($i = 1; $i < 7; $i++){
+    array_push($dishes, getMenuDishes($db, $i));
+}
 drawRestaurant($restaurant['name'], $menus, $dishes);
 drawFooter();
