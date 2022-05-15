@@ -41,7 +41,7 @@ create table Administrator(
 );
 
 ALTER TABLE Restaurant
-ADD UserId int CONSTRAINT userid REFERENCES Administrator ON DELETE CASCADE ON UPDATE CASCADE;                                                                         
+Add UserId int CONSTRAINT userid REFERENCES Administrator ON DELETE CASCADE ON UPDATE CASCADE;                                                                         
 
 create table Orders(
     OrderId int PRIMARY KEY,
