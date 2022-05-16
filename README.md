@@ -2,7 +2,11 @@
 
 ## Uml diagram
 
-![](Database/database.png)
+![](Docs/database.png)
+
+## Mockup
+
+![](Docs/Mockup.png)
 
 #### Project developed by
 * Daniela Tomás - up202004946
