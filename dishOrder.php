@@ -1,18 +1,19 @@
 <?php
 
-require_once('Database/connection.db.php');
-require_once('Database/restaurant.db.php');
-require_once('Database/dishOrder.db.php');
+session_start();
 
+require_once('Database/connection.db.php');
+require_once('Database/restaurant.class.php');
+require_once('Database/menu.class.php');
+require_once('Database/dish.class.php');
 require_once('Templates/common.tpl.php');
 require_once('Templates/dishOrder.tpl.php');
 
 $db = getDatabaseConnection();
-
-$dish = getDish($db, intval($_GET['id']));
-$menu = getRestaurantMenu($db, $dish['menuId']);
-$restaurant = getRestaurant($db, $menu['id']);
+$dish = Dish::getDish($db, intval($_GET['id']));
+$menu = Menu::getMenu($db, $dish->menu);
+$restaurant = Restaurant::getRestaurant($db, $menu->id);
 
 drawHeader();
-drawDish($restaurant['id'], $restaurant['name'], $dish['id'], $dish['name'], $dish['description'], $dish['price']);
+drawDish($restaurant->id, $restaurant->name, $dish);
 drawFooter();

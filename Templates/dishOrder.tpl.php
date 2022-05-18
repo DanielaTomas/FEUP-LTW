@@ -2,14 +2,14 @@
 
 declare(strict_types=1); ?>
 
-<?php function drawDish(int $restaurantId, string $restaurantName, int $dishId, string $dishName, string $description, float $price)
+<?php function drawDish(int $restaurantId, string $restaurantName, Dish $dish)
 { ?>
   <h2><a href="restaurant.php?id=<?= $restaurantId ?>"><?= $restaurantName ?></a></h2>
   <section id="dishes">
-    <img src="https://picsum.photos/200?<?= $dishId ?>">
-    <h3><?= $dishName ?></h3>
-    <p><?= $description ?></p>
-    <p><span><?=$price?></span></p>
+    <img src="https://picsum.photos/200?<?= $dish->id?>">
+    <h3><?= $dish->name ?></h3>
+    <p><?= $dish->description ?></p>
+    <p><span><?=$dish->price?></span></p>
   </section>
   <?php drawAddToCart() ?>
 <?php } ?>
