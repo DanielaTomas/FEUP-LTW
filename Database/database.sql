@@ -236,3 +236,7 @@ insert into RestaurantMenu(RestaurantId,MenuId) values (010,03);
 insert into RestaurantMenu(RestaurantId,MenuId) values (010,04);
 insert into RestaurantMenu(RestaurantId,MenuId) values (010,05);
 insert into RestaurantMenu(RestaurantId,MenuId) values (010,06);
+
+
+-- Users (testes) --
+insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (1, 'Henrique Vicente', 'Hacker', '2d7cd852faf790678785453124f3b4f5d5d25860', 'rua teste', 936108692, 1);

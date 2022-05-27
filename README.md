@@ -6,7 +6,7 @@
 
 ## Mockup
 
-![](Docs/Mockup.svg)
+![](Docs/Mockup.png)
 
 #### Project developed by
 * Daniela Tomás - up202004946
