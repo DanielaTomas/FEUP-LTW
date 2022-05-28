@@ -4,11 +4,14 @@
   class Restaurant {
     public int $id;
     public string $name;
+    public string $image;
 
-    public function __construct(int $id, string $name)
+
+    public function __construct(int $id, string $name, string $image)
     { 
       $this->id = $id;
       $this->name = $name;
+      $this->image = $image;
     }
 
     static function countRestaurant(PDO $db){
@@ -23,14 +26,15 @@
     }
 
     static function getRestaurants(PDO $db, int $count) : array {
-        $stmt = $db->prepare('SELECT RestaurantId, RestaurantName FROM Restaurant LIMIT ?');
+        $stmt = $db->prepare('SELECT RestaurantId, RestaurantName, RestaurantPhoto FROM Restaurant LIMIT ?');
         $stmt->execute(array($count));
   
       $Restaurants = array();
       while ($Restaurant = $stmt->fetch()) {
         $Restaurants[] = new Restaurant(
           intval($Restaurant['RestaurantId']),
-          $Restaurant['RestaurantName']
+          $Restaurant['RestaurantName'],
+          $Restaurant['RestaurantPhoto']
         );
       }
   
@@ -39,7 +43,7 @@
 
     static function getRestaurant(PDO $db, int $id) : Restaurant {
         $stmt = $db->prepare('
-        SELECT RestaurantId, RestaurantName
+        SELECT RestaurantId, RestaurantName, RestaurantPhoto
         FROM Restaurant
         WHERE RestaurantId = ?
         ');
@@ -49,7 +53,8 @@
   
       return new Restaurant(
         intval($Restaurant['RestaurantId']), 
-        $Restaurant['RestaurantName']
+        $Restaurant['RestaurantName'],
+        $Restaurant['RestaurantPhoto']
       );
     }  
   }

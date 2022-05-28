@@ -21,7 +21,8 @@ create table Restaurant(
     RestaurantId int PRIMARY KEY,
     RestaurantName varchar(80) NOT NULL,
     RestaurantAddress varchar(70),
-    Category varchar(30)
+    Category varchar(30),
+    RestaurantPhoto text NOT NULL
 );
 
 create table Users(
@@ -126,16 +127,27 @@ create table PromotionAdmin(
 -- Populate Tables --
 
 -- Restaurants --
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (001,"The Vintage Dinner",001);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (002,"O Monarca",002);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (003,"Little Persia",003);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (004,"Le Chapeau",004);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (005,"Quinta do Sabor",005);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (006,"Brasa & Cia",006);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (007,"Casa da Sogra",007);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (008,"Arigato",008);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (009,"Station",009);
-insert into Restaurant(RestaurantId,RestaurantName,UserId) values (010,"The Flavor",010);
+
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (001,"The Vintage Dinner","https://i.pinimg.com/564x/f2/af/fd/f2affd7d5d19e280cb8dc03fbe07313a.jpg",001);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (002,"O Monarca","https://resizer.otstatic.com/v2/photos/wide-xlarge/3/46818715.jpg",002);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (003,"Little Persia","https://b.zmtcdn.com/data/reviews_photos/0e2/40f10f402cd0a12885b14009732120e2_1562593796.jpg",003);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (004,"Le Chapeau","https://media-cdn.tripadvisor.com/media/photo-s/11/b4/b5/81/salle-de-restaurant.jpg",004);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (005,"Quinta do Sabor","https://cms.infoportugal.info/media/pois/final/152/JRN.RE.29331-152597.JPG",005);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (006,"Brasa & Cia","https://res.cloudinary.com/tf-lab/image/upload/restaurant/ee987337-575f-411e-8f80-cb98c044c349/0fceab41-ea23-48aa-8859-4fae213e8782.jpg",006);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (007,"Casa da Sogra","https://media-cdn.tripadvisor.com/media/photo-s/17/10/c0/f7/casa-da-sogra.jpg",007);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (008,"Arigato","https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,g_auto:subject,q_auto,f_auto/restaurant/10f60a1c-2511-4780-9752-9102b789c838/cd6461cb-13ee-459b-a29f-3f6de81e9a14.jpg",008);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (009,"Station","https://images.squarespace-cdn.com/content/v1/5eecf28fbb27655754cf5b3c/1599665880697-1RZPDUVZVVQ7ZISLSJVA/Lounge%2BEast%2Bwall%2Bfacing%2BN.jpg?format=2500w",009);
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (010,"The Flavor","https://media-cdn.tripadvisor.com/media/photo-s/0a/f8/e7/67/caption.jpg",010); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (011,"Holy Moly","https://i2-prod.birminghammail.co.uk/incoming/article22429157.ece/ALTERNATES/s1200b/0_EntranceJPG.jpg",011); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (012,"Six Seven","https://www.thebespokeblackbook.com/wp-content/uploads/2018/05/sixseven-1024x613.jpg",012); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (013,"Porta 4","https://media.timeout.com/images/103977741/750/422/image.jpg",013); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (014,"Pátio do Duque","https://10619-2.s.cdn12.com/rests/small/w550/h367/802_503287925.jpg",014); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (015,"Amour Bistrô","https://b.zmtcdn.com/data/pictures/0/306320/5da09ff3658fe7cf3de34599cbc909a7.jpeg",015); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (016,"Alma","https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,g_auto:subject,q_auto,f_auto/restaurant/5df82aae-3bf0-4ac7-93f1-b400c38f95c2/c9c6531c-ff49-4e7a-a827-ec9759b34b27.jpg",016); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (017,"Casserole","https://media-cdn.tripadvisor.com/media/photo-s/1a/e6/34/08/casserole.jpg",017); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (018,"O Botequim","https://res.cloudinary.com/tf-lab/image/upload/restaurant/db7613a2-9a80-4e4c-90ef-4ee1e61c056e/263ef65c-b3ef-469c-b093-ce635a894f55.jpg",018); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (019,"Dom Joaquim","https://foodle.pro/restaurants-images/2017-07-17-22-25-44-263434_1.jpg",019); 
+insert into Restaurant(RestaurantId,RestaurantName,RestaurantPhoto,UserId) values (020,"O Marinheiro","https://media-cdn.tripadvisor.com/media/photo-s/19/62/6b/c1/nova-imagem-de-o-marinheiro.jpg",020); 
 
 -- Menus --
 

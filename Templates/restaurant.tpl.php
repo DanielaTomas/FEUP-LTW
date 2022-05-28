@@ -5,7 +5,7 @@
   <section id="restaurants">
     <?php foreach($restaurants as $restaurant) { ?> 
       <article>
-        <img src="https://picsum.photos/200?<?=$restaurant->id?>">
+        <img src=<?=$restaurant->image?>/>
         <a href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
       </article>
     <?php } ?>

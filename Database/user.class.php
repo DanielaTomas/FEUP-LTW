@@ -74,5 +74,24 @@
       $stmt->execute(array($this->firstLastName, $this->username, $this->userAddress, $this->phoneNumber, $this->id));
     }
 
+    static function registerUser($db, $userid, $firstLastName, $username, $password, $userAddress, $phoneNumber, $restaurantId){
+      $stmt = $db->prepare('
+        INSERT INTO Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) VALUES (?, ?, ?, ?, ?, ?, ?)
+      ');
+
+      $stmt->execute(array($userid, $firstLastName, $username, $password, $userAddress, $phoneNumber, $restaurantId));
+    }
+
+    static function maxid(PDO $db){
+      $stmt = $db->prepare('
+      SELECT MAX(UserId)
+      FROM Users
+      ');
+      $stmt->execute(array());
+      $max = $stmt->fetch();
+
+    return $max['MAX(UserId)']+1;
+    }
+
   }
 ?>
