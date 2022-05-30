@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1); ?>
 
-<?php function drawProfileForm(User $user) { ?>
+<?php function drawProfileForm(User $user, string $path) { ?>
 <h2>Profile</h2>
-<form action="action_edit_profile.php" method="post" class="profile">
+<form action=<?php echo ($path); ?> method="post" class="profile">
 
   <label for="first_last_name">First and Last Name:</label>
   <input id="first_last_name" type="text" name="first_last_name" value="<?=$user->firstLastName?>">

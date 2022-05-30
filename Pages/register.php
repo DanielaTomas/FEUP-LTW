@@ -1,12 +1,12 @@
     
      <?php
-      require_once('Templates/common.tpl.php');
+      require_once('../Templates/common.tpl.php');
       session_start();
-      drawHeader();
+      drawHeader('../Css/style.css', 'index.php', '../Actions/action_login.php', '../Actions/action_logout.php');
       ?>
     <body>
         <strong>Registration<br></strong>
-        <form action="action_register.php" method="post">
+        <form action="../Actions/action_register.php" method="post">
             <label for="registerfirstlastname"><p>First and Last Name</p></label>
             <input type="text" name="registerfirstlastname" required>
 

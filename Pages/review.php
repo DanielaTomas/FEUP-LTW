@@ -10,7 +10,7 @@
 
   <header>
       <h1><a href="index.php">Restaurants Website</a></h1>
-      <form action="action_login.php" method="post" class="login">
+      <form action="Actions/action_login.php" method="post" class="login">
         <input type="text" name="username" placeholder="username">
         <input type="password" name="password" placeholder="password">
         <a href="register.php">Register</a>

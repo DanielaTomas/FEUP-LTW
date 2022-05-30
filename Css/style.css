@@ -6,6 +6,11 @@ h2>a {
     color: black;
 }
 
+main {
+    margin-top: 10.5em;
+    background-color: #438d7f2f;
+}
+
 main>h2 {
     text-align: center;
     margin-bottom: 1em;
@@ -26,20 +31,9 @@ body>header a {
     color: white;
 }
 
-body>div>img {
-    /*margin-left: 0;
-    margin-right: auto;
-    width: 1%;
-    height: auto;*/
-    float: left;
-    width: 140px;
-    height: auto;
-}
-
 body>header>h1 a {
     font-size: 45px;
     font-family: Georgia, 'Times New Roman', Arial, sans-serif;
-    font-weight: bold;
     font-style: italic;
 }
 
@@ -50,12 +44,8 @@ body>header {
     text-align: center;
     position: fixed;
     top: 0;
-    right: 10px;
-    left: 10px;
-}
-
-main {
-    margin-top: 150px;
+    right: 0.5em;
+    left: 0.5em;
 }
 
 #restaurants {
@@ -120,6 +110,24 @@ button {
 button:hover {
     background-color: #979595;
     color: white;
+}
+
+#cartIcon {
+    width: 6em;
+    height: auto;
+    position:fixed;
+    bottom: 0.5em;
+    right: 0.5em;
+    filter: brightness(85%) sepia(60%);
+
+}
+
+#logo {
+    width: 10em;
+    height: auto;
+    position: fixed;
+    top: 0.05em;
+    left: 1em;
 }
 
 footer {
