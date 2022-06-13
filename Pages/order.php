@@ -18,13 +18,4 @@
   drawHeader($session);
   drawCart($orders);
   drawFooter(); 
-  //$_POST['mode'] == 'Cancel'
-  /*if(True)
-  {
-    $row_id = (int)$_POST['row_id'];
-    $ordersUser = $_POST['ordersUser'];
-    if($ordersUser[$row_id] != NULL) {
-      Order::removeOrder($db, $ordersUser[$row_id]);
-    }
-   }*/
 ?> 

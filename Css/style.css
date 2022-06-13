@@ -233,6 +233,17 @@ footer {
     color: white;
 }
 
+#info {
+    text-align: center;
+    font-size: 30px;
+    color: red;
+}
+
+.home {
+    width: 10%;
+    height: auto;
+}
+
 @media only screen and (max-width: 540px) {
     #logo {
         width: 5em;

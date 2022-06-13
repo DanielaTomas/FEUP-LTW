@@ -16,7 +16,7 @@
     <header>
       <a href='index.php'><img id="logo" src="../Docs/logo.png" alt="logo"></a>
       <h1><a href='index.php'>Meet & Eat</a></h1>
-      <?php if (session::login()) drawLogoutForm(session::getUsername(), '../Actions/action_logout.php');
+      <?php if ($session::login()) drawLogoutForm($session::getUsername(), '../Actions/action_logout.php');
         else drawLoginForm('../Actions/action_login.php'); ?>
     </header>
 
