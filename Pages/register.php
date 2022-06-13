@@ -1,29 +1,31 @@
-    
-     <?php
-      require_once('../Templates/common.tpl.php');
-      session_start();
-      drawHeader('../Css/style.css', 'index.php', '../Actions/action_login.php', '../Actions/action_logout.php');
-      ?>
+<?php
+    require_once('../Templates/common.tpl.php');
+    require_once('../Classes/session.class.php');
+    $session = new Session();
+    drawHeader($session);
+?>
     <body>
-        <strong>Registration<br></strong>
-        <form action="../Actions/action_register.php" method="post">
-            <label for="registerfirstlastname"><p>First and Last Name</p></label>
-            <input type="text" name="registerfirstlastname" required>
+        <h2>Registration<br></h2>
+        <div id="registration">
+          <form action="../Actions/action_register.php" method="post">
+              <label for="registerfirstlastname"><p>First and Last Name</p></label>
+              <input type="text" name="registerfirstlastname" required>
 
-            <label for="registeraddress"><p>Address</p></label>
-            <input type="text" name="registeraddress" required>
+              <label for="registeraddress"><p>Address</p></label>
+              <input type="text" name="registeraddress" required>
 
-            <label for="registerphonenumber"><p>Phone Number</p></label>
-            <input type="number" name="registerphonenumber" required>
+              <label for="registerphonenumber"><p>Phone Number</p></label>
+              <input type="number" name="registerphonenumber" required>
 
-            <label for="registerusername"><p>Username</p></label>
-            <input type="text" name="registerusername" required>
+              <label for="registerusername"><p>Username</p></label>
+              <input type="text" name="registerusername" required>
 
-            <label for="registerpassword"><p>Password</p></label>
-            <input type="password" name="registerpassword" required>
+              <label for="registerpassword"><p>Password</p></label>
+              <input type="password" name="registerpassword" required>
 
-            <input type="submit" name="register" value="Register">
-        </form>
+              <input type="submit" name="register" value="Register">
+          </form>
+        </div>
     </body>
     <?php
       drawFooter();

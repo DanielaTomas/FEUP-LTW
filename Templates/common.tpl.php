@@ -1,24 +1,32 @@
 <?php declare(strict_types = 1); ?>
 
-<?php function drawHeader(string $css, string $index, string $pathlogin, string $pathlogout) { ?>
+<?php function drawHeader(Session $session) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
     <title>Meet & Eat</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href=<?php echo ($css); ?>>
-    <link rel="icon" type="image/ico" href="https://cdn.discordapp.com/attachments/937461518197461044/978375318630985738/logo.png" alt="logo">
+    <link rel="stylesheet" href='../Css/style.css'>
+    <link rel="icon" type="image/ico" href="../Docs/logo.png" alt="logo">
+    <script src="../Javascript/script.js" defer></script>
   </head>
   <body>
 
     <header>
-      <a href=<?php echo($index); ?>><img id="logo" src="https://cdn.discordapp.com/attachments/937461518197461044/978375318630985738/logo.png" alt="logo"></a>
-      <h1><a href=<?php echo ($index); ?>>Meet & Eat</a></h1>
-      <?php if (isset($_SESSION['id'])) drawLogoutForm($_SESSION['username'], $pathlogout);
-        else drawLoginForm($pathlogin); ?>
+      <a href='index.php'><img id="logo" src="../Docs/logo.png" alt="logo"></a>
+      <h1><a href='index.php'>Meet & Eat</a></h1>
+      <?php if (session::login()) drawLogoutForm(session::getUsername(), '../Actions/action_logout.php');
+        else drawLoginForm('../Actions/action_login.php'); ?>
     </header>
 
+    <section id="messages">
+      <?php foreach ($session->getMessages() as $message) { ?>
+        <article class="<?=$message['type']?>">
+          <?=$message['text']?>
+        </article>
+      <?php } ?>
+    </section>
     <main>
 <?php } ?>
 
@@ -39,11 +47,11 @@
 <?php } ?>
 
 <?php function drawFooter() { ?>
-    <a href="../Pages/order.php"><img id="cartIcon" src="https://ayudawp.com/wp-content/uploads/2020/04/icono-anadir-al-carrito.png"></a>
+    <a href="../Pages/order.php"><img id="cartIcon" src="../Docs/cart.png"></a>
     </main>
 
     <footer>
-      LTW Project &copy 2022
+      LTW Project &copy 2022 By Daniela Tomás and Henrique Vicente
     </footer>
   </body>
 </html>

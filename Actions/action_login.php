@@ -1,7 +1,8 @@
 <?php
   declare(strict_types = 1);
 
-  session_start();
+  require_once('../Classes/session.class.php');
+  $session = new Session();
 
   require_once('../Database/connection.db.php');
   require_once('../Classes/user.class.php');
@@ -10,8 +11,12 @@
 
   $user = User::getUserWithPassword($db, $_POST['username'], $_POST['password']);
   if ($user) {
-    $_SESSION['id'] = $user->id;
-    $_SESSION['username'] = $user->username;
+    $session->setId($user->id);
+    $session->setUsername($user->username());
+    $session->addMessage('success', 'Login successful!');
+  }
+  else {
+    $session->addMessage('error', 'Wrong username or password!');
   }
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);

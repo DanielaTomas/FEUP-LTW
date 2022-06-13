@@ -4,13 +4,17 @@
   class Restaurant {
     public int $id;
     public string $name;
+    public string $address;
+    public string $category;
     public string $image;
 
 
-    public function __construct(int $id, string $name, string $image)
+    public function __construct(int $id, string $name, string $address, string $category, string $image)
     { 
       $this->id = $id;
       $this->name = $name;
+      $this->address = $address;
+      $this->category = $category;
       $this->image = $image;
     }
 
@@ -25,8 +29,26 @@
     return $max['MAX(RestaurantId)'];
     }
 
+    static function searchRestaurants(PDO $db, string $search, int $count) : array {
+      $stmt = $db->prepare('SELECT RestaurantId, RestaurantName, RestaurantAddress, Category, RestaurantPhoto FROM Restaurant WHERE RestaurantName LIKE ? LIMIT ?');
+      $stmt->execute(array($search . '%', $count));
+  
+      $restaurants = array();
+      while ($restaurant = $stmt->fetch()) {
+        $restaurants[] = new Restaurant(
+          intval($restaurant['RestaurantId']),
+          $restaurant['RestaurantName'],
+          $restaurant['RestaurantAddress'],
+          $restaurant['Category'],
+          $restaurant['RestaurantPhoto']
+        );
+      }
+  
+      return $restaurants;
+    }
+
     static function getRestaurants(PDO $db, int $count) : array {
-        $stmt = $db->prepare('SELECT RestaurantId, RestaurantName, RestaurantPhoto FROM Restaurant LIMIT ?');
+        $stmt = $db->prepare('SELECT RestaurantId, RestaurantName, RestaurantAddress, Category, RestaurantPhoto FROM Restaurant LIMIT ?');
         $stmt->execute(array($count));
   
       $Restaurants = array();
@@ -34,6 +56,8 @@
         $Restaurants[] = new Restaurant(
           intval($Restaurant['RestaurantId']),
           $Restaurant['RestaurantName'],
+          $Restaurant['RestaurantAddress'],
+          $Restaurant['Category'],
           $Restaurant['RestaurantPhoto']
         );
       }
@@ -43,7 +67,7 @@
 
     static function getRestaurant(PDO $db, int $id) : Restaurant {
         $stmt = $db->prepare('
-        SELECT RestaurantId, RestaurantName, RestaurantPhoto
+        SELECT RestaurantId, RestaurantName, RestaurantAddress, Category, RestaurantPhoto
         FROM Restaurant
         WHERE RestaurantId = ?
         ');
@@ -52,9 +76,11 @@
       $Restaurant = $stmt->fetch();
   
       return new Restaurant(
-        intval($Restaurant['RestaurantId']), 
-        $Restaurant['RestaurantName'],
-        $Restaurant['RestaurantPhoto']
+        intval($Restaurant['RestaurantId']),
+          $Restaurant['RestaurantName'],
+          $Restaurant['RestaurantAddress'],
+          $Restaurant['Category'],
+          $Restaurant['RestaurantPhoto']
       );
     }  
   }

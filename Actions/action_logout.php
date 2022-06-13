@@ -1,8 +1,9 @@
 <?php
   declare(strict_types = 1);
 
-  session_start();
-  session_destroy();
+  require_once('../Classes/session.class.php');
+  $session = new Session();
+  $session::logout();
 
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header('Location: ../index.php');
 ?>

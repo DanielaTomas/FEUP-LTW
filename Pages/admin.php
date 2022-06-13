@@ -1,0 +1,1 @@
+<?php //tudo o que o admin pode fazer ?>

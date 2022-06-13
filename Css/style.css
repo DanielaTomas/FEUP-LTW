@@ -7,8 +7,8 @@ h2>a {
 }
 
 main {
-    margin-top: 10.5em;
     background-color: #438d7f2f;
+    z-index: -1;
 }
 
 main>h2 {
@@ -25,6 +25,10 @@ main article a {
     align-self: center;
     justify-self: center;
     text-align: center;
+}
+
+body {
+    margin-top: 10.5em;
 }
 
 body>header a {
@@ -53,6 +57,7 @@ body>header {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
+    margin-top: 2em;
 }
 
 #restaurants article {
@@ -69,11 +74,23 @@ body>header {
     font-size: 30px;
 }
 
+#restaurants img {
+    border: 5px solid grey;
+    padding: 0.2em;
+    border-radius: 50%;
+}
+
 img {
     display: flex;
     width: 300px;
     height: 300px;
     object-fit: cover;
+}
+
+#menus img {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
 }
 
 #menus {
@@ -83,18 +100,39 @@ img {
     gap: 1em;
 }
 
+#menus a {
+    text-shadow: 0px 0px;
+    color: #757474
+}
+
 #menus article {
     display: grid;
     justify-content: center;
-    width: 200px;
 }
 
 #menus article h3 {
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
 }
 
-#dishes span::after {
+#dishes * {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+#dishes h3 {
+    font-size: 28px;
+    color: #757474
+}
+
+#dishOrder * {
+    text-align: center;
+}
+
+#dishes span::after,
+#orders tfoot th:last-child::after {
     content: " €";
 }
 
@@ -115,11 +153,10 @@ button:hover {
 #cartIcon {
     width: 6em;
     height: auto;
-    position:fixed;
+    position: fixed;
     bottom: 0.5em;
-    right: 0.5em;
+    right: 1em;
     filter: brightness(85%) sepia(60%);
-
 }
 
 #logo {
@@ -130,9 +167,107 @@ button:hover {
     left: 1em;
 }
 
+#searchrestaurant {
+    position: absolute;
+    right: 2em;
+    top: 16em;
+}
+
+#search {
+    position: absolute;
+    right: 12.7em;
+    top: 13.1em;
+    width: 1.6em;
+    height: auto;
+}
+
+#messages article {
+    margin: 1em 0;
+    padding-top: 1em;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#messages article.success {
+    color: green;
+}
+
+#messages article.warning {
+    color: yellow;
+}
+
+#messages article.error {
+    color: red;
+}
+
+#shoppingcart th,
+#shoppingcart td {
+    padding: 2em;
+    text-align: center;
+    border: 1px solid;
+    font-weight: bold;
+}
+
+th {
+    background-color: rgba(116, 114, 114, 0.884);
+    color: white;
+}
+
+td {
+    color: rgba(116, 114, 114, 0.884);
+}
+
+tr:hover {
+    background-color: rgba(128, 128, 128, 0.082);
+}
+
+header {
+    z-index: 99999;
+}
+
 footer {
     padding: 1em;
     margin-top: 1em;
     background-color: #438D80;
     color: white;
+}
+
+@media only screen and (max-width: 540px) {
+    #logo {
+        width: 5em;
+        top: 0.5em;
+        left: 0.3em;
+    }
+    #cartIcon {
+        width: 5em;
+        right: 0;
+    }
+    body>header>h1 a {
+        font-size: 35px;
+    }
+    body>header form.login input {
+        float: left;
+    }
+    #searchrestaurant {
+        right: 6.5em;
+        top: 18.2em;
+    }
+    #search {
+        right: 16em;
+        top: 15em;
+    }
+    img {
+        display: flex;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    #logo,
+    #search {
+        display: none;
+    }
 }

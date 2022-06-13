@@ -21,7 +21,9 @@
       $this->restaurant = $restaurant;
     }
 
-     
+    function username() {
+      return $this->username;
+    }
     
     static function getUserWithPassword(PDO $db, string $username, string $password) : ?User {
       $stmt = $db->prepare('
@@ -65,7 +67,7 @@
     );
     }
 
-    function save($db) {
+    function save(PDO $db) {
       $stmt = $db->prepare('
         UPDATE Users SET FirstLastName = ?, Username = ?, UserAddress = ?, PhoneNumber = ?
         WHERE UserId = ?
@@ -93,5 +95,34 @@
     return $max['MAX(UserId)']+1;
     }
 
+    static function verifyAdmin(PDO $db, int $id){
+      $stmt = $db->prepare('
+      SELECT UserId
+      FROM Administrator
+      WHERE UserId = ?
+      ');
+      $stmt->execute(array($id));
+      $admin = $stmt->fetch();
+
+      if($admin != NULL){
+        return True;
+      }
+      return False;
+    }
+
+    static function verifyOrders(PDO $db, int $id){
+      $stmt = $db->prepare('
+      SELECT OrderId
+      FROM Orders
+      WHERE UserId = ?
+      ');
+      $stmt->execute(array($id));
+      $orders = $stmt->fetch();
+
+      if($orders != NULL){
+        return True;
+      }
+      return False;
+    }
   }
 ?>

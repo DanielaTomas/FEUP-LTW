@@ -1,9 +1,10 @@
 <?php
-  declare(strict_types = 1);
+  declare(strict_types = 1); 
 
-  session_start();
+  require_once('../Classes/session.class.php');
+  $session = new Session();
 
-  if (!isset($_SESSION['id'])) die(header('Location: Pages/index.php'));
+  if (!$session::getId()) die(header('Location: Pages/index.php'));
 
   require_once('../Database/connection.db.php');
   require_once('../Classes/user.class.php');
@@ -11,17 +12,17 @@
 
   $db = getDatabaseConnection('sqlite:../Database/database.db');
 
-  $user = User::getUser($db, $_SESSION['id']);
+  $user = User::getUser($db, $session::getId());
 
   if ($user) {
-    $user->firstLastName = $_POST['first_last_name'];
-    $user->userAddress = $_POST['address'];
-    $user->phoneNumber = intval($_POST['phonenumber']);
-    $user->username = $_POST['username'];
+    $user->firstLastName = htmlspecialchars($_POST['first_last_name']);
+    $user->userAddress = htmlspecialchars($_POST['address']);
+    $user->phoneNumber = intval(htmlspecialchars($_POST['phonenumber']));
+    $user->username = htmlspecialchars($_POST['username']);
     
     $user->save($db);
 
-    $_SESSION['username'] = $user->username;
+    $session->setUsername($user->username());
   }
 
   header('Location: ../Pages/profile.php');

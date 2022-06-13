@@ -1,20 +1,30 @@
 <?php
 declare(strict_types = 1);
 
-session_start();
+require_once('../Classes/session.class.php');
+$session = new Session();
 
 require_once('../Database/connection.db.php');
 require_once('../Classes/restaurant.class.php');
 require_once('../Classes/menu.class.php');
 require_once('../Classes/dish.class.php');
+require_once('../Classes/order.class.php');
 require_once('../Templates/common.tpl.php');
 require_once('../Templates/dish.tpl.php');
+require_once('../Classes/user.class.php');
 
 $db = getDatabaseConnection('sqlite:../Database/database.db');
 $dish = Dish::getDish($db, intval($_GET['id']));
 $menu = Menu::getMenu($db, $dish->menu);
 $restaurant = Restaurant::getRestaurant($db, $menu->restaurant);
+$user = $session::getUsername();
 
-drawHeader('../Css/style.css', 'index.php', '../Actions/action_login.php', '../Actions/action_logout.php');
+drawHeader($session);
 drawDish($restaurant->id, $restaurant->name, $dish);
 drawFooter();
+if($user)
+{
+     Order::addOrder($db,intval($_GET['id']),"Pending",$restaurant->id,intval($session::getId()),intval($_GET['id']));  
+}
+
+?>

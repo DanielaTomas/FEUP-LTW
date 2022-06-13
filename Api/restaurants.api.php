@@ -10,10 +10,7 @@
   require_once('../Templates/restaurant.tpl.php');
 
   $db = getDatabaseConnection('sqlite:../Database/database.db');
-  $restaurants = Restaurant::getRestaurants($db, intval(Restaurant::countRestaurant($db)));
+  $restaurants = Restaurant::searchRestaurants($db, $_GET['search'], intval(Restaurant::countRestaurant($db)));
 
-  drawHeader($session);
-  drawRestaurants($restaurants);
-  drawFooter(); 
-
-?> 
+  echo json_encode($restaurants);
+?>
