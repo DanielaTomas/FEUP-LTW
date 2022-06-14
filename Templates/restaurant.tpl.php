@@ -1,6 +1,11 @@
 <?php declare(strict_types = 1); ?>
 
 <?php function drawRestaurants(array $restaurants) { ?>
+  <?php if(isset($_SESSION['id'])){ ?>
+  <form action="../Pages/favorites.php" method="post" class="favoritebutton">
+    <button type="submit">Favorites</button>
+  </form>
+  <?php } ?>
   <img id="search" src='../Docs/search.png'><input id="searchrestaurant" type="text" placeholder="search">
   <h2>Restaurants</h2>
   <section id="restaurants">
@@ -16,6 +21,12 @@
 <?php function drawRestaurant(Session $session, Restaurant $restaurant, array $menus, array $dishes) { ?>
   <h2><?=$restaurant->name?></h2>
   <section><p>Location: <?=$restaurant->address?><br>Category: <?=$restaurant->category?></p></section>
+  <form action="../Actions/action_favorites.php?userid=<?= $session::getId()?>&rid=<?=$restaurant->id?>&did=0&option=1" method="post" class="addfavorite">
+    <button type="submit">Add Favorite</button>
+  </form>
+  <form action="../Actions/action_favorites.php?userid=<?= $session::getId()?>&rid=<?=$restaurant->id?>&did=0&option=2" method="post" class="removefavorite">
+    <button type="submit">Remove Favorite</button>
+  </form>
   <section id="menus">
     <?php foreach ($menus as $menu) { ?>
     <article>

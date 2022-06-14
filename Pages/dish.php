@@ -23,7 +23,7 @@ if(!isset($_SESSION['id'])){
 }
 else{
      drawHeader($session);
-     drawDish($restaurant->id, $restaurant->name, $dish);
+     drawDish($session,$restaurant->id, $restaurant->name, $dish);
      drawFooter();
 }
 

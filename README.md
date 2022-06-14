@@ -21,6 +21,7 @@
 * [info.php](Pages/info.php)
 * [refresh.php](Pages/refresh.php)
 * [edit_profile_button.php](Pages/edit_profile_button.php)
+* [favorites.php](Pages/favorites.php)
 
 ## Templates
 
@@ -31,7 +32,7 @@
 * [order.tpl.php](Templates/order.tpl.php)
 * [review.tpl.php](Templates/review.tpl.php)
 * [admin.tpl.php](Templates/admin.tpl.php)
-
+* [favorites.tpl.php](Templates/favorites.tpl.php)
 
 ## Classes
 
@@ -43,7 +44,7 @@
 * [order.class.php](Classes/order.class.php)
 * [review.class.php](Classes/review.class.php)
 * [admin.class.php](Classes/admin.class.php)
-
+* [favorites.class.php](Classes/favorites.class.php)
 
 ## Actions
 
@@ -52,7 +53,8 @@
 * [action_logout.php](Actions/action_logout.php)
 * [action_register.php](Actions/action_register.php)
 * [action_admin.php](Actions/action_admin.php)
-
+* [action_favorites.php](Actions/action_favorites.php)
+* [action_change_status.php](Actions/action_change_status.php)
 
 ## Database
 
@@ -86,12 +88,12 @@
 - [x] List Restaurant Reviews
 - [ ] Restaurant Owner Can Answer to Review
 - [ ] List Customer Orders
-- [ ] Change Order State
+- [x] Change Order State
 - [x] Search Restaurants
 - [x] Order Dishes
-- [ ] List My Orders
-- [ ] Mark Restaurant as Favourite
-- [ ] Mark Dish as Favourite
+- [x] List My Orders
+- [x] Mark Restaurant as Favourite
+- [x] Mark Dish as Favourite
 - [x] Customer Can Leave a Review
 
 ## Credentials

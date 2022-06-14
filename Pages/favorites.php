@@ -6,13 +6,13 @@
 
   require_once('../Database/connection.db.php');
   require_once('../Templates/common.tpl.php');
-  require_once('../Templates/order.tpl.php');
-  require_once('../Classes/order.class.php');
-  require_once('../Classes/dish.class.php');
+  require_once('../Templates/favorites.tpl.php');
+  require_once('../Classes/favorites.class.php');
 
   $db = getDatabaseConnection('sqlite:../Database/database.db');
-  $orders = Order::getOrders($db, intval(Order::countOrders($db)));
+  
   drawHeader($session);
-  drawCart($db,$session,$orders);
+  $favorites = Favorites::getFavorites($db, $session::getId());
+  drawFavorites($db,$session,$favorites);
   drawFooter(); 
-?> 
+?>

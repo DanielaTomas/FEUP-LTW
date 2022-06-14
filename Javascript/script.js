@@ -51,8 +51,7 @@ function deleteOrder(r, order) {
         },
         cache: false,
         success: function(response) {
-            var res = JSON.parse(response)
-            console.log(res)
+            console.log(response)
         }
     });
     refresh()
@@ -70,12 +69,10 @@ function addOrder(restaurant, dish) {
         },
         cache: false,
         success: function(response) {
-            var res = JSON.parse(response)
-            console.log(res)
+            console.log(response)
         }
     });
     refresh()
-
 }
 
 $(document).ready(function() {
@@ -95,8 +92,7 @@ $(document).ready(function() {
             },
             cache: false,
             success: function(response) {
-                var res = JSON.parse(response)
-                console.log(res)
+                console.log(response)
             }
         });
         refresh()

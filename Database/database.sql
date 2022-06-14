@@ -2,7 +2,7 @@
 --.headers on
 --Pragma Foreign_Keys = on;
 
-drop table if exists QuantityOrder;
+drop table if exists Favorites;
 drop table if exists PromotionAdmin;
 drop table if exists DishOrder;
 drop table if exists RestaurantMenu;
@@ -126,6 +126,17 @@ create table PromotionAdmin(
     UserId int NOT NULL references Administrator ON DELETE CASCADE
                                                  ON UPDATE CASCADE,  
     PRIMARY KEY (PromotionId, UserId)
+);
+
+
+create table Favorites(
+    FavId int PRIMARY KEY,
+    UserId int NOT NULL references Users ON DELETE CASCADE
+                                         ON UPDATE CASCADE,
+    RestaurantId int NOT NULL references Restaurant ON DELETE CASCADE
+                                                    ON UPDATE CASCADE,
+    DishId int default(0) NOT NULL references Dish ON DELETE CASCADE
+                                        ON UPDATE CASCADE
 );
 
 

@@ -15,19 +15,19 @@
   <form action="" method="post" class="adminoptions">
 
     <?php if($option == 1 || $option == 10){ ?>
-    <p>Administrator Id</p> <input type="number" id="data" name="adminid"><br>
+    <p>Administrator Id</p> <input type="number" id="data" name="adminid"><//br>
     <?php } ?>
 
     <?php if($option == 2 || $option == 3 || $option == 6 || $option == 7 || $option == 11){ ?>
-    <p>User Id</p> <input type="number" id="data" name="userid"><br>
+    <p>User Id</p> <input type="number" id="data" name="userid"><//br>
     <?php } ?>
 
     <?php if($option == 2 || $option == 6){ ?>
-    <p>User Name</p> <input type="text" id="data" name="username"><br>
-    <p>User Username</p> <input type="text" id="data" name="userusername"><br>
-    <p>User Password</p> <input type="password" id="data" name="userpassword"><br>
-    <p>User Phone Number</p> <input type="number" id="data" name="userphonenumber"><br>
-    <p>User Address</p> <input type="text" id="data" name="useraddress"><br>
+    <p>User Name</p> <input type="text" id="data" name="username"><//br>
+    <p>User Username</p> <input type="text" id="data" name="userusername"><//br>
+    <p>User Password</p> <input type="password" id="data" name="userpassword"><//br>
+    <p>User Phone Number</p> <input type="number" id="data" name="userphonenumber"><//br>
+    <p>User Address</p> <input type="text" id="data" name="useraddress"><//br>
     <?php } ?>
 
     <?php if($option == 2 || $option == 3 || $option == 4 || $option == 6 || $option == 7 || $option == 8 || $option == 12){ ?>

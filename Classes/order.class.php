@@ -68,15 +68,9 @@
       return $orders;
     }
 
-    static function updateOrders(PDO $db){
-      $stmt = $db->prepare('
-      UPDATE MAX(OrderId)
-      FROM Orders
-      ');
-      $stmt->execute(array());
-      $max = $stmt->fetch();
-
-    return $max['MAX(OrderId)'];
+    static function updateOrderStatus(PDO $db, $status, $id){
+      $stmt = $db->prepare('UPDATE Orders SET OrderStatus = ? WHERE OrderId = ?');
+      $stmt->execute(array($status,$id));
     }
 
     static function getDishOrder(PDO $db, int $id){

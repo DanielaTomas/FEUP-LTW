@@ -22,8 +22,7 @@
   <label for="phonenumber"><p>Phone Number:</p></label>
   <input id="phonenumber" type="number" name="phonenumber" value="<?=$user->phoneNumber?>"> 
   <label for="username"><p>Username:</p></label>
-  <input id="username" type="text" name="username" value="<?=$user->username?>">
-  <br>
+  <input id="username" type="text" name="username" value="<?=$user->username?>"><br>
   <button type="submit">Save</button>
 </form>
 <?php } ?>

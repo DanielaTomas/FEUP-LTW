@@ -1,6 +1,8 @@
 <?php
 
-declare(strict_types=1); ?>
+declare(strict_types=1); 
+
+?>
 
 <?php function drawReview(Restaurant $restaurant, array $reviews)
 { ?>
@@ -8,12 +10,12 @@ declare(strict_types=1); ?>
         <?php
         $count = 0;
         if(sizeof($reviews) > 0) {?>
-        <div>
+        <div id="average">
         <?php for($i = 0; $i < sizeof($reviews); $i++){
           $count += $reviews[$i]->score;
         }
         $average = round($count/(sizeof($reviews)),2) ?>&#11088;
-        <?= $average ?><?="("?><?= sizeof($reviews) ?><?=")"?>
+          <?= $average ?><?="("?><?= sizeof($reviews) ?><?=")"?>
         </div>
         <?php } ?>
         <div class="rate"> 
@@ -28,7 +30,7 @@ declare(strict_types=1); ?>
                   <option value="5">5</option>
               </select>
               <h3>Leave a Comment:</h3>
-              <textarea class="reviewText" id="reviewText" rows="5" cols="60"></textarea></br>
+              <textarea class="reviewText" id="reviewText" rows="5" cols="60"></textarea><br>
               <button type="submit" id="submitReview">Submit</button>
             </form>
         </div>

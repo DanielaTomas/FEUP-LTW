@@ -155,6 +155,33 @@ button:hover {
     color: white;
 }
 
+.addfavorite button,
+.removefavorite button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10em;
+    height: 3em;
+    border-radius: 20px;
+}
+
+.addfavorite,
+.removefavorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+}
+
+.favoritebutton button {
+    width: 15em;
+    height: 4em;
+    margin-top: 1em;
+    margin-left: 1em;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
 #cartIcon {
     width: 6em;
     height: auto;
@@ -255,6 +282,10 @@ header {
     z-index: 99999;
 }
 
+.finish {
+    text-align: center;
+}
+
 .editprofile,
 .profile,
 .adminoptions {
@@ -301,6 +332,15 @@ footer {
     text-align: center;
 }
 
+.rate h3,
+.rate h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#average {
+    font-size: 24px;
+}
+
 #reviewRestaurantName,
 #reviewUsername {
     color: #757474;
@@ -318,20 +358,37 @@ footer {
     text-align: center;
 }
 
-#restaurantReview {
-    font-size: 20px;
-}
-
-for {
-    text-align: center;
-}
-
+div,
 section>p {
     text-align: center;
 }
 
-div {
-    text-align: center;
+p>a {
+    color: #757474;
+    font-size: 18px;
+}
+
+#dish {
+    color: #757474;
+    font-size: 18px;
+}
+
+#reviewText {
+    width: 40em;
+    height: auto;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #757474;
+    border-radius: 5px;
+    font-size: 15px;
+    resize: none;
+}
+
+#register {
+    width: 10em;
+    height: 4em;
+    border: 2px solid #757474;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 540px) {
@@ -383,6 +440,9 @@ div {
         width: 250px;
         height: 250px;
         object-fit: cover;
+    }
+    #reviewText {
+        width: 15em;
     }
 }
 
