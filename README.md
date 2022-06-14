@@ -19,6 +19,7 @@
 * [admin.php](Pages/admin.php)
 * [adminoperation.php](Pages/adminoperation.php)
 * [info.php](Pages/info.php)
+* [refresh.php](Pages/refresh.php)
 
 ## Templates
 
@@ -70,6 +71,32 @@
 ## JavaScript
 
 * [script.js](Javascript/script.js)
+
+## Features
+
+- [ ] Register
+- [ ] Login/Logout
+- [ ] Edit Profile
+- [ ] Add Restaurant
+- [ ] Edit Restaurant
+- [ ] Add Dishes
+- [ ] Add Dish Photo
+- [ ] List Reviews
+- [ ] Restaurant Owner Can Answer to Review
+- [ ] List Customer Orders
+- [ ] Change Order State
+- [ ] Search Restaurants
+- [ ] Order Dishes
+- [ ] List My Orders
+- [ ] Mark Restaurant as Favourite
+- [ ] Mark Dish as Favourite
+- [ ] Customer Can Leave a Review
+
+## Credentials
+
+* Hacker/Hacker (admin)
+* Daniela/tomas (admin)
+* Teste/123 (user)
 
 
 ## Project developed by

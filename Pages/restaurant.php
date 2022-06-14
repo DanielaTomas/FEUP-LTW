@@ -18,7 +18,7 @@ $menus = Menu::getRestaurantMenus($db, $restaurant->id);
 $user = $session::getUsername();
 drawHeader($session);
 $dishes=array();
-for($i = 1; $i < Menu::countMenu($db); $i++){
+for($i = 1; $i <= Menu::countMenu($db); $i++){
     array_push($dishes, Dish::getMenuDishes($db, $i));
 }
 drawRestaurant($session,$restaurant, $menus, $dishes);

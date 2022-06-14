@@ -11,19 +11,10 @@
     $db = getDatabaseConnection('sqlite:../Database/database.db');
 
 
-	//$restaurant = Restaurant::getRestaurant($db,intval($_GET(['id'])));
 	$score = htmlspecialchars($_POST['score']);
     $comment = htmlspecialchars($_POST['comment']);
+    $restaurantid = htmlspecialchars($_POST['restaurantid']);
 
-    Review::addReview($db, Review::countReview($db)+1, intval($score), $comment,1,intval($session::getId()));
 
-	/*$sql = "INSERT INTO `crud`( `name`, `email`, `phone`, `city`) 
-	VALUES ('$score')";
-	if (mysqli_query($conn, $sql)) {
-		echo json_encode(array("statusCode"=>200));
-	} 
-	else {
-		echo json_encode(array("statusCode"=>201));
-	}
-	mysqli_close($conn);*/
+    Review::addReview($db, Review::countReview($db)+1, intval($score), $comment,intval($restaurantid),intval($session::getId()));
 ?>

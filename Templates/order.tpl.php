@@ -3,20 +3,15 @@
 declare(strict_types=1);
 ?>
 
-<?php
-function delete(PDO $db, array $quantities, array $orders, int $id, int $i){
-  Order::removeOrder($db, $id);
-  unset($quantities[$id]);
-  unset($orders[$i]);
-};?>
-
 <?php function drawCart(array $orders, int $id) { ?>
 <?php 
   require_once("../Database/connection.db.php");
   require_once("../Classes/restaurant.class.php");
   require_once("../Classes/order.class.php");
   $db = getDatabaseConnection('sqlite:../Database/database.db');
+  if(intval($_POST['quant'])){
   Order::addquantity($db, $id, intval($_POST['quant']));
+}
   $quantitiesorders = Order::getallquantities($db);
   $ordersUser = [];
   $bill = 0;
@@ -39,11 +34,7 @@ function delete(PDO $db, array $quantities, array $orders, int $id, int $i){
             <tr><td><?= $restaurant->name ?></td><td><?= $dish->name ?></td>
                 <td><?=$quantitiesorders[$i]?></td><td><?=$dish->price?> €</td>
                 <td><?=$orders[$i]->status?></td><td><?=$total?> €</td>
-                <td><input type="submit" value="Cancel" onclick="deleteRow(this)"></a></td>
-                <?php if(isset($_POST['Cancel'])){
-                  delete($db, $quantitiesorders, $orders, $orders[$i]->id, $i);
-                }
-                ?>
+                <td><a href="../Actions/action_delete_order.php?orderid=<?=$orders[$i]->id?>"><input type="submit" value="Cancel" onclick="deleteRow(this)"></a></td>
             </tr>
           <?php } ?>
         </tbody>
@@ -52,6 +43,4 @@ function delete(PDO $db, array $quantities, array $orders, int $id, int $i){
         </tfoot>
       </table>
   </section>
-<?php } 
-/*../Actions/action_delete_order.php?orderid=<?=$orders[$i]->id?>&quantity=<?=$quantitiesorders[$i]?>*/
-?>
+<?php } ?>

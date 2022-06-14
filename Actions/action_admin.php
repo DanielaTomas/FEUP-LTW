@@ -28,7 +28,7 @@
     User Address <input type="text" id="data" name="useraddress"><br>
     <?php } ?>
 
-    <?php if($option == 2 || $option == 3 || $option == 4 || $option == 6 || $option == 7 || $option == 8 || $option == 11 || $option == 12 || $option == 13){ ?>
+    <?php if($option == 2 || $option == 3 || $option == 4 || $option == 6 || $option == 7 || $option == 8 || $option == 12){ ?>
     Restaurant Id <input type="number" id="data" name="restaurantid"><br>
     <?php } ?>
 
@@ -39,7 +39,7 @@
     Restaurant Photo (Link) <input type="text" id="data" name="restaurantphoto"><br>
     <?php } ?>
 
-    <?php if($option == 4 || $option == 5 || $option == 8 || $option == 9 || $option == 13 || $option == 14){ ?>
+    <?php if($option == 4 || $option == 5 || $option == 8 || $option == 9 || $option == 13){ ?>
     Menu Id <input type="number" id="data" name="menuid"><br>
     <?php } ?>
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href='../Css/style.css'>
     <link rel="icon" type="image/ico" href="../Docs/logo.png" alt="logo">
     <script src="../Javascript/script.js" defer></script>
+    <script src = "https://code.jquery.com/jquery-3.5.1.min.js" > </script>
   </head>
   <body>
 
@@ -29,13 +30,21 @@
       <?php } ?>
     </section>
     <main>
-    <?php $user = $session::getUsername(); 
-    if($user) {?>
-     <a href="../Pages/order.php"><img id="cartIcon" src="../Docs/cart.png"></a>
+    <?php
+    require_once('../Database/connection.db.php');
+    require_once('../Classes/session.class.php');
+    require_once('../Classes/user.class.php');
+    $db = getDatabaseConnection('sqlite:../Database/database.db');
+    $admin = User::verifyAdmin($db, intval($session::getId()));
+    $orders = User::verifyOrders($db, intval($session::getId()));
+    $user = $session::getUsername();
+    if($user && $admin){ ?>
      <a href="../Pages/admin.php"><img id="adminIcon" src="../Docs/admin.png"></a>
-
-    <?php } ?>
-<?php } ?>
+    <?php }
+    if($user && $orders){ ?>
+      <a href="../Pages/order.php"><img id="cartIcon" src="../Docs/cart.png"></a>
+    <?php }
+  } ?>
 
 <?php function drawLoginForm(string $path) { ?>
   <form action=<?php echo ($path); ?> method="post" class="login">
@@ -55,7 +64,6 @@
 
 <?php function drawFooter() { ?>
     </main>
-
     <footer>
       LTW Project &copy 2022 By Daniela Tomás and Henrique Vicente
     </footer>

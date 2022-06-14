@@ -5,9 +5,6 @@ declare(strict_types=1); ?>
 <?php function drawReview(Restaurant $restaurant)
 { ?>
   <h2>Send Your Feedback!</h2>   
-     <!--   <div class="alert" id="success">
-          <a href="#" class="close" data-dismiss="alert"></a>
-        </div> -->
         <div class="rate"> 
             <h2>What do you think about <a href="../Pages/restaurant.php?id=<?=$restaurant->id?>"><span id=reviewRestaurantName><?= "$restaurant->name" ?></span></a> restaurant?</h2>
             <h3>Rate:</h3>
@@ -63,4 +60,4 @@ declare(strict_types=1); ?>
           <p>There are no reviews yet &#128542;</p>
        </div>
         <?php } ?>
-<?php } ?>
+      <?php } ?>

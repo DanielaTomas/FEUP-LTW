@@ -128,9 +128,8 @@ create table PromotionAdmin(
 );
 
 create table QuantityOrder(
-    quantity int NOT NULL,
-    orderid int NOT NULL,
-    PRIMARY KEY (orderid, quantity)
+    orderid int NOT NULL PRIMARY KEY,
+    quantity int NOT NULL
 );
 
 -- Populate Tables --
@@ -973,9 +972,8 @@ insert into RestaurantMenu(RestaurantId,MenuId) values (020,92); -- DESSERT --
 
 -- Users (testes) --
 insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (1, 'Henrique Vicente', 'Hacker', '2d7cd852faf790678785453124f3b4f5d5d25860', 'rua teste 1', 936108692, 1);
-insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (2, 'Daniela Tomás', 'Daniela', '2d7cd852faf790678785453124f3b4f5d5d25860', 'rua teste 2', 912345678, 2);
+insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (2, 'Daniela Tomás', 'Daniela', '2bc6038c3dfca09b2da23c8b6da8ba884dc2dcc2', 'rua teste 2', 912345678, 2);
 insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (3, 'Teste Testado', 'Teste', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'rua teste 3', 987654321, 3);
-
 
 -- Orders --
 --insert into Orders(OrderId,OrderStatus,RestaurantId,UserId) values (1,"Pendente",1,1);

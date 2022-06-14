@@ -294,6 +294,10 @@ footer {
     font-size: 20px;
 }
 
+section>p {
+    text-align: center;
+}
+
 @media only screen and (max-width: 540px) {
     #logo {
         width: 5em;
@@ -302,7 +306,23 @@ footer {
     }
     #cartIcon {
         width: 5em;
-        right: 0;
+    }
+    #reviewIcon {
+        width: 5em;
+    }
+    #adminIcon {
+        width: 5em;
+    }
+    #reviewText {
+        width: 25em;
+    }
+    #userReview {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #restaurantReview {
+        margin-left: auto;
+        margin-right: auto;
     }
     body>header>h1 a {
         font-size: 35px;
@@ -311,7 +331,7 @@ footer {
         float: left;
     }
     #searchrestaurant {
-        right: 6.5em;
+        right: 5em;
         top: 18.2em;
     }
     #search {

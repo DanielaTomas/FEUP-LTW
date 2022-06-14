@@ -25,8 +25,10 @@
     }
 
     static function addUser(PDO $db, int $id, string $name, string $username, string $password, string $address, int $phonenumber, int $restaurantid){
-      $stmt = $db->prepare('INSERT INTO Users(UserId,FirstLastName,Username,Password,UserAddress,PhoneNumber,RestaurantId) VALUES (?, ?, ?, ?, ?, ?, ?) ');
-      $stmt->execute(array($id,$name,$username,hash($password,''),$address,$phonenumber,$restaurantid));
+      $stmt = $db->prepare('
+      INSERT INTO Users(UserId,FirstLastName,Username,Password,UserAddress,PhoneNumber,RestaurantId) VALUES (?, ?, ?, ?, ?, ?, ?)
+      ');
+      $stmt->execute(array($id,$name,$username,sha1($password),$address,$phonenumber,$restaurantid));
     }
 
     static function addRestaurant(PDO $db, int $id, string $name, string $address, string $category, string $image, int $userid){
@@ -48,7 +50,7 @@
 
     static function updateUser(PDO $db, int $id, string $name, string $username, string $password, string $address, int $phonenumber, int $restaurantid){
       $stmt = $db->prepare('UPDATE Users SET FirstLastName = ?, Username = ?, Password = ?, UserAddress = ?, PhoneNumber = ?, RestaurantId = ? WHERE UserId = ?');
-      $stmt->execute(array($name,$username,hash($password,''),$address,$phonenumber,$restaurantid,$id));
+      $stmt->execute(array($name,$username,sha1($password),$address,$phonenumber,$restaurantid,$id));
     }
 
     static function updateRestaurant(PDO $db, int $id, string $name, string $address, string $category, string $image, int $userid){
@@ -73,7 +75,9 @@
     }
 
     static function removeUser(PDO $db, int $id){
-      $stmt = $db->prepare('DELETE FROM Users NATURAL JOIN Administrator WHERE UserId = ? ');
+      $stmt = $db->prepare('DELETE FROM Users WHERE UserId = ? ');
+      $stmt->execute(array($id));
+      $stmt = $db->prepare('DELETE FROM Administrator WHERE UserId = ? ');
       $stmt->execute(array($id));
     }
 

@@ -15,6 +15,7 @@
 
 <?php function drawRestaurant(Session $session, Restaurant $restaurant, array $menus, array $dishes) { ?>
   <h2><?=$restaurant->name?></h2>
+  <section><p>Location: <?=$restaurant->address?><br>Category: <?=$restaurant->category?></p></section>
   <section id="menus">
     <?php foreach ($menus as $menu) { ?>
     <article>
@@ -31,8 +32,13 @@
     <?php } ?>
    </section> 
    <?php 
-   $user = $session::getUsername(); 
-    if($user) { ?>
-   <a href="../Pages/review.php?id=<?=$restaurant->id?>"><img id="reviewIcon" src="../Docs/review.png"></a> 
+   $user = $session::getUsername();
+   require_once('../Database/connection.db.php');
+   require_once('../Classes/user.class.php');
+   $db = getDatabaseConnection('sqlite:../Database/database.db');
+   $admin = User::verifyAdmin($db, intval($session::getId()));
+   $orders = User::verifyOrders($db, intval($session::getId()));
+    if($user && ($admin || $orders)) { ?>
+   <a href="../Pages/review.php?id=<?=$restaurant->id?>"><img id="reviewIcon" src="../Docs/review.png"></a>
    <?php } ?>
 <?php } ?>
