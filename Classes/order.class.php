@@ -6,12 +6,14 @@
     public string $status;
     public int $restaurant;
     public int $userid;
+    public int $quantity;
 
-    public function __construct(int $id, string $status, int $restaurant, int $userid) {
+    public function __construct(int $id, string $status, int $restaurant, int $userid, int $quantity) {
       $this->id = $id;
       $this->status = $status;
       $this->restaurant = $restaurant;
       $this->userid = $userid;
+      $this->quantity = $quantity;
     }
 
     static function countOrders(PDO $db){
@@ -32,10 +34,10 @@
   
     }
 
-    static function addOrder(PDO $db, int $id, string $status, int $restaurantid, int $userid, int $dishid){
-      $stmt = $db->prepare('INSERT INTO Orders(OrderId, OrderStatus, RestaurantId, UserId) VALUES (?, ?, ?, ?)');
+    static function addOrder(PDO $db, int $id, string $status, int $restaurantid, int $userid, int $quantity, int $dishid){
+      $stmt = $db->prepare('INSERT INTO Orders(OrderId, OrderStatus, RestaurantId, UserId, Quantity) VALUES (?, ?, ?, ?, ?)');
 
-      $stmt->execute(array($id, $status, $restaurantid, $userid));
+      $stmt->execute(array($id, $status, $restaurantid, $userid, $quantity));
 
       Order::addDishOrder($db, $dishid, $id);
     }
@@ -43,18 +45,12 @@
     static function removeOrder(PDO $db, int $id){
       $stmt = $db->prepare('DELETE FROM Orders WHERE OrderId = ?');
       $stmt->execute(array($id));
-      $stmt = $db->prepare('DELETE FROM QuantityOrder WHERE orderid = ?');
-      $stmt->execute(array($id));
       $stmt = $db->prepare('DELETE FROM DishOrder WHERE OrderId = ?');
       $stmt->execute(array($id));
     }
 
     static function getOrders(PDO $db, int $count) : array {
-        $stmt = $db->prepare('
-        SELECT OrderId, OrderStatus, RestaurantId, UserId
-        FROM Orders
-        LIMIT ?
-      ');
+        $stmt = $db->prepare('SELECT OrderId, OrderStatus, RestaurantId, UserId, Quantity FROM Orders LIMIT ?');
       $stmt->execute(array($count));
   
       $orders = [];
@@ -64,11 +60,23 @@
           intval($order['OrderId']), 
           $order['OrderStatus'],
           intval($order['RestaurantId']),
-          intval($order['UserId'])
+          intval($order['UserId']),
+          intval($order['Quantity'])
         );
       }
 
       return $orders;
+    }
+
+    static function updateOrders(PDO $db){
+      $stmt = $db->prepare('
+      UPDATE MAX(OrderId)
+      FROM Orders
+      ');
+      $stmt->execute(array());
+      $max = $stmt->fetch();
+
+    return $max['MAX(OrderId)'];
     }
 
     static function getDishOrder(PDO $db, int $id){
@@ -89,22 +97,6 @@
       intval($Dish['MenuId']),
       $Dish['DishPhoto']
     );
-  }
-
-  static function addquantity(PDO $db, int $id, int $quantity){
-    $stmt = $db->prepare('INSERT INTO QuantityOrder(orderid,quantity) VALUES (?, ?)');
-    $stmt->execute(array($id, $quantity));
-  }
-
-  static function getallquantities(PDO $db){
-    $stmt = $db->prepare('SELECT quantity FROM QuantityOrder');
-      $stmt->execute(array());
-  
-      $quantities = [];
-      while ($quantityorder = $stmt->fetch()) {
-        $quantities[] = intval($quantityorder['quantity']);
-      }
-      return $quantities;
   }
 }
 ?>

@@ -3,17 +3,13 @@
 declare(strict_types=1);
 ?>
 
-<?php function drawCart(array $orders, int $id) { ?>
+<?php function drawCart(array $orders) { ?>
 <?php 
   require_once("../Database/connection.db.php");
   require_once("../Classes/restaurant.class.php");
   require_once("../Classes/order.class.php");
   $db = getDatabaseConnection('sqlite:../Database/database.db');
-  if(intval($_POST['quant'])){
-  Order::addquantity($db, $id, intval($_POST['quant']));
-}
-  $quantitiesorders = Order::getallquantities($db);
-  $ordersUser = [];
+
   $bill = 0;
 ?>
   <h2>Orders</h2>
@@ -27,14 +23,13 @@ declare(strict_types=1);
             <?php
               $restaurant = Restaurant::getRestaurant($db,$orders[$i]->restaurant);
               $dish = Order::getDishOrder($db,$orders[$i]->id);
-              array_push($ordersUser, $orders[$i]->id);
-              $total = $quantitiesorders[$i]*$dish->price;
+              $total = $orders[$i]->quantity*$dish->price;
               $bill = $bill + $total;
             ?>
             <tr><td><?= $restaurant->name ?></td><td><?= $dish->name ?></td>
-                <td><?=$quantitiesorders[$i]?></td><td><?=$dish->price?> €</td>
+                <td><?= $orders[$i]->quantity ?></td><td><?=$dish->price?> €</td>
                 <td><?=$orders[$i]->status?></td><td><?=$total?> €</td>
-                <td><a href="../Actions/action_delete_order.php?orderid=<?=$orders[$i]->id?>"><input type="submit" value="Cancel" onclick="deleteRow(this)"></a></td>
+                <td><input type="submit" value="Cancel" id="cancel" onclick="deleteOrder(this,<?= $orders[$i]->id ?>)"></a></td>
             </tr>
           <?php } ?>
         </tbody>

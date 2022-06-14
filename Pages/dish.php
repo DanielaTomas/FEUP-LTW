@@ -17,17 +17,14 @@ $db = getDatabaseConnection('sqlite:../Database/database.db');
 $dish = Dish::getDish($db, intval($_GET['id']));
 $menu = Menu::getMenu($db, $dish->menu);
 $restaurant = Restaurant::getRestaurant($db, $menu->restaurant);
-$user = $session::getUsername();
 
-drawHeader($session);
-drawDish($restaurant->id, $restaurant->name, $dish);
-drawFooter();
-if($user)
-{
-     Order::addOrder($db,intval($_GET['id']),"Pending",$restaurant->id,intval($session::getId()),intval($_GET['id']));  
+if(!isset($_SESSION['id'])){
+     header('Location: info.php');
 }
 else{
-     header('Location: info.php');
+     drawHeader($session);
+     drawDish($restaurant->id, $restaurant->name, $dish);
+     drawFooter();
 }
 
 ?>

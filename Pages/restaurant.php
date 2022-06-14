@@ -23,5 +23,4 @@ for($i = 1; $i <= Menu::countMenu($db); $i++){
 }
 drawRestaurant($session,$restaurant, $menus, $dishes);
 drawFooter();
-
 ?>

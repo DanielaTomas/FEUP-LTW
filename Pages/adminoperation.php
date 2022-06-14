@@ -1,4 +1,9 @@
-
+<?php
+require_once('../Classes/session.class.php');
+$session = new Session();
+require_once('../Templates/common.tpl.php');
+drawHeader($session);
+?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -13,10 +18,13 @@
     <div id = "info">
     <?php
     echo "Operation completed with success"
-    ?>
+    ?> &#128526;	
       <form action="index.php" method="post">
         <button type="submit" class="home">Home</button>
       </form>
     </div>
   </body>
 </html>
+<?php
+drawFooter();
+?>

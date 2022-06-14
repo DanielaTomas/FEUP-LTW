@@ -49,10 +49,11 @@ add UserId int CONSTRAINT userid REFERENCES Administrator ON DELETE CASCADE
 create table Orders(
     OrderId int PRIMARY KEY,
     OrderStatus varchar(60) NOT NULL,
+    Quantity int default(0) NOT NULL,
     RestaurantId int NOT NULL references Restaurant ON DELETE CASCADE
                                                     ON UPDATE CASCADE,  
     UserId int NOT NULL references Users ON DELETE CASCADE
-                                         ON UPDATE CASCADE                                                                                
+                                         ON UPDATE CASCADE                                                                              
 );
 
 create table Review(
@@ -127,10 +128,6 @@ create table PromotionAdmin(
     PRIMARY KEY (PromotionId, UserId)
 );
 
-create table QuantityOrder(
-    orderid int NOT NULL PRIMARY KEY,
-    quantity int NOT NULL
-);
 
 -- Populate Tables --
 

@@ -11,17 +11,17 @@ require_once("../Database/connection.db.php");
     <p><?= $dish->description ?></p>
     <p><span class="price"><?=$dish->price?></span></p>
   </section>
-  <?php drawAddToCart() ?>
+  <?php drawAddToCart($restaurantId, $dish->id) ?>
 <?php } ?>
 
-<?php function drawAddToCart()
+<?php function drawAddToCart(int $restaurantId, int $dishId)
 { 
 $db = getDatabaseConnection('sqlite:../Database/database.db');
 ?>
 <section id="dishOrder">
   <form action="../Pages/order.php?id=<?=Order::countOrders($db)+1;?>" method="post">
-    <input class="quantity" name="quant" type="number" value="1" min="1" max="100" step="1">
-    <button type="submit" class="addtocart">Add to Cart</button>
+    <input id="quantity"class="quantity" name="quant" type="number" value="1" min="1" max="100" step="1">
+    <button type="submit" class="addtocart" id="addtocart" onclick="addOrder(<?= $restaurantId ?>, <?= $dishId ?>)">Add to Cart</button>
   </form>
 </section>
 <?php } ?>

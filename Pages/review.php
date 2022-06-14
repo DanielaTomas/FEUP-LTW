@@ -15,8 +15,8 @@
     $reviews = Review::getRestaurantReviews($db,$restaurant->id);
 
     drawHeader($session);
-    drawReview($restaurant);
-    drawReviews($db,$reviews);
+    drawReview($restaurant, $reviews);
+    drawReviews($db, $reviews);
     drawFooter();
 
 ?>

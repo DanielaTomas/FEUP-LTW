@@ -1,3 +1,9 @@
+<?php
+require_once('../Classes/session.class.php');
+$session = new Session();
+require_once('../Templates/common.tpl.php');
+drawHeader($session);
+?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -17,3 +23,6 @@
     </div>
   </body>
 </html>
+<?php
+drawFooter();
+?>

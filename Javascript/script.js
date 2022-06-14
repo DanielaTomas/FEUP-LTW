@@ -36,9 +36,46 @@ function escapeHtml(string) {
     });
 }
 
-function deleteRow(r) {
+function refresh() {
+    window.location.href = "refresh.php";
+}
+
+function deleteOrder(r, order) {
     var i = r.parentNode.parentNode.rowIndex
     document.getElementById("ordersTable").deleteRow(i)
+    $.ajax({
+        url: "../Api/removeOrder.api.php",
+        type: "POST",
+        data: {
+            order: order
+        },
+        cache: false,
+        success: function(response) {
+            var res = JSON.parse(response)
+            console.log(res)
+        }
+    });
+    refresh()
+}
+
+function addOrder(restaurant, dish) {
+    var quantity = $('#quantity').val()
+    $.ajax({
+        url: "../Api/addOrders.api.php",
+        type: "POST",
+        data: {
+            quantity: quantity,
+            restaurant: restaurant,
+            dish: dish
+        },
+        cache: false,
+        success: function(response) {
+            var res = JSON.parse(response)
+            console.log(res)
+        }
+    });
+    refresh()
+
 }
 
 $(document).ready(function() {
@@ -47,7 +84,7 @@ $(document).ready(function() {
         var score = $('#score').val()
         var comment = $('#reviewText').val()
         var url = escapeHtml(window.location.search);
-        var restaurantid = url.substring(url.lastIndexOf('/') + 5);
+        var restaurantid = url.substring(url.lastIndexOf('/') + 5)
         $.ajax({
             url: "../Api/saveReview.api.php",
             type: "POST",
@@ -62,7 +99,7 @@ $(document).ready(function() {
                 console.log(res)
             }
         });
-        window.location.href = "refresh.php";
-        //$("#userReview").load(location.href + " p");
+        refresh()
+            //$("#userReview").load(location.href + " p");
     });
 });

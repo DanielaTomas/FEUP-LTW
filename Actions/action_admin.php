@@ -9,52 +9,54 @@
   require_once('../Classes/admin.class.php');
   $db = getDatabaseConnection('sqlite:../Database/database.db');
   $option = $_GET['option'];
-  ?>
-  <form action="" method="post">
+  require_once('../Templates/common.tpl.php');
+  drawHeader($session);
+?>
+  <form action="" method="post" class="adminoptions">
 
     <?php if($option == 1 || $option == 10){ ?>
-    Administrator Id <input type="number" id="data" name="adminid" value=0><br>
+    <p>Administrator Id</p> <input type="number" id="data" name="adminid"><br>
     <?php } ?>
 
     <?php if($option == 2 || $option == 3 || $option == 6 || $option == 7 || $option == 11){ ?>
-    User Id <input type="number" id="data" name="userid" value=0><br>
+    <p>User Id</p> <input type="number" id="data" name="userid"><br>
     <?php } ?>
 
     <?php if($option == 2 || $option == 6){ ?>
-    User Name <input type="text" id="data" name="username"><br>
-    User Username <input type="text" id="data" name="userusername"><br>
-    User Password <input type="password" id="data" name="userpassword"><br>
-    User Phone Number <input type="number" id="data" name="userphonenumber"><br>
-    User Address <input type="text" id="data" name="useraddress"><br>
+    <p>User Name</p> <input type="text" id="data" name="username"><br>
+    <p>User Username</p> <input type="text" id="data" name="userusername"><br>
+    <p>User Password</p> <input type="password" id="data" name="userpassword"><br>
+    <p>User Phone Number</p> <input type="number" id="data" name="userphonenumber"><br>
+    <p>User Address</p> <input type="text" id="data" name="useraddress"><br>
     <?php } ?>
 
     <?php if($option == 2 || $option == 3 || $option == 4 || $option == 6 || $option == 7 || $option == 8 || $option == 12){ ?>
-    Restaurant Id <input type="number" id="data" name="restaurantid"><br>
+    <p>Restaurant Id</p> <input type="number" id="data" name="restaurantid"><br>
     <?php } ?>
 
     <?php if($option == 3 || $option == 7){ ?>
-    Restaurant Name <input type="text" id="data" name="restaurantname"><br>
-    Restaurant Location <input type="text" id="data" name="restaurantaddress"><br>
-    Restaurant Category <input type="text" id="data" name="restaurantcategory"><br>
-    Restaurant Photo (Link) <input type="text" id="data" name="restaurantphoto"><br>
+    <p>Restaurant Name</p> <input type="text" id="data" name="restaurantname"><br>
+    <p>Restaurant Location</p> <input type="text" id="data" name="restaurantaddress"><br>
+    <p>Restaurant Category</p> <input type="text" id="data" name="restaurantcategory"><br>
+    <p>Restaurant Photo (Link)</p> <input type="text" id="data" name="restaurantphoto"><br>
     <?php } ?>
 
     <?php if($option == 4 || $option == 5 || $option == 8 || $option == 9 || $option == 13){ ?>
-    Menu Id <input type="number" id="data" name="menuid"><br>
+    <p>Menu Id</p> <input type="number" id="data" name="menuid"><br>
     <?php } ?>
 
     <?php if($option == 4 || $option == 8){ ?>
-    Menu Type <input type="text" id="data" name="menutype"><br>
+    <p>Menu Type</p> <input type="text" id="data" name="menutype"><br>
     <?php } ?>
 
     <?php if($option == 5 || $option == 9 || $option == 14){ ?>
-    Dish Id <input type="number" id="data" name="dishid"><br>
+    <p>Dish Id</p> <input type="number" id="data" name="dishid"><br>
     <?php } ?>
     <?php if($option == 5 || $option == 9){ ?>
-    Dish Name <input type="text" id="data" name="dishname"><br>
-    Dish Price <input type="text" id="data" name="dishprice"><br>
-    Dish Description <input type="text" id="data" name="dishdescription"><br>
-    Dish Photo (Link) <input type="text" id="data" name="dishphoto"><br>
+    <p>Dish Name</p> <input type="text" id="data" name="dishname"><br>
+    <p>Dish Price</p> <input type="text" id="data" name="dishprice"><br>
+    <p>Dish Description</p> <input type="text" id="data" name="dishdescription"><br>
+    <p>Dish Photo (Link)</p> <input type="text" id="data" name="dishphoto"><br>
     <?php } ?>
     <input type="submit" name="submit" value="Submit">
   </form>
@@ -122,4 +124,5 @@
       break;
     }
   }
+drawFooter();
 ?>

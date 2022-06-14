@@ -20,6 +20,7 @@
 * [adminoperation.php](Pages/adminoperation.php)
 * [info.php](Pages/info.php)
 * [refresh.php](Pages/refresh.php)
+* [edit_profile_button.php](Pages/edit_profile_button.php)
 
 ## Templates
 
@@ -50,7 +51,6 @@
 * [action_login.php](Actions/action_login.php)
 * [action_logout.php](Actions/action_logout.php)
 * [action_register.php](Actions/action_register.php)
-* [action_delete_order.php](Actions/action_delete_order.php)
 * [action_admin.php](Actions/action_admin.php)
 
 
@@ -63,6 +63,8 @@
 
 * [restaurants.api.php](Api/restaurants.api.php)
 * [saveReview.api.php](Api/saveReview.api.php)
+* [removeOrder.api.php](Api/removeOrder.api.php)
+* [addOrders.api.php](Api/addOrders.api.php)
 
 ## CSS
 
@@ -74,23 +76,23 @@
 
 ## Features
 
-- [ ] Register
-- [ ] Login/Logout
-- [ ] Edit Profile
-- [ ] Add Restaurant
-- [ ] Edit Restaurant
-- [ ] Add Dishes
-- [ ] Add Dish Photo
-- [ ] List Reviews
+- [x] Register
+- [x] Login/Logout
+- [x] Edit Profile
+- [x] Add Restaurant
+- [x] Edit Restaurant
+- [x] Add Dishes
+- [x] Add Dish Photo
+- [x] List Restaurant Reviews
 - [ ] Restaurant Owner Can Answer to Review
 - [ ] List Customer Orders
 - [ ] Change Order State
-- [ ] Search Restaurants
-- [ ] Order Dishes
+- [x] Search Restaurants
+- [x] Order Dishes
 - [ ] List My Orders
 - [ ] Mark Restaurant as Favourite
 - [ ] Mark Dish as Favourite
-- [ ] Customer Can Leave a Review
+- [x] Customer Can Leave a Review
 
 ## Credentials
 

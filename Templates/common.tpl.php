@@ -16,8 +16,8 @@
   <body>
 
     <header>
-      <a href='index.php'><img id="logo" src="../Docs/logo.png" alt="logo"></a>
-      <h1><a href='index.php'>Meet & Eat</a></h1>
+      <a href="../index.php"><img id="logo" src="../Docs/logo.png" alt="logo"></a>
+      <h1><a href="../index.php">Meet & Eat</a></h1>
       <?php if ($session::login()) drawLogoutForm($session::getUsername(), '../Actions/action_logout.php');
         else drawLoginForm('../Actions/action_login.php'); ?>
     </header>
@@ -41,7 +41,7 @@
     if($user && $admin){ ?>
      <a href="../Pages/admin.php"><img id="adminIcon" src="../Docs/admin.png"></a>
     <?php }
-    if($user && $orders){ ?>
+    if(isset($_SESSION['id'])){ ?>
       <a href="../Pages/order.php"><img id="cartIcon" src="../Docs/cart.png"></a>
     <?php }
   } ?>

@@ -255,6 +255,29 @@ header {
     z-index: 99999;
 }
 
+.editprofile,
+.profile,
+.adminoptions {
+    text-align: center;
+    font-size: 20px;
+}
+
+.editprofile button,
+.profile button,
+.adminoptions input,
+#data {
+    width: 10%;
+    height: 2em;
+    font-size: 18px;
+    margin-top: 1em;
+}
+
+.editprofile label>p,
+.profile label>p,
+.adminoptions {
+    color: #757474;
+}
+
 footer {
     padding: 1em;
     margin-top: 1em;
@@ -285,16 +308,29 @@ footer {
 }
 
 #userReview {
-    margin-left: 7em;
     font-size: 20px;
+    text-align: left;
+    padding-left: 6em;
+}
+
+#userReview2 {
+    font-size: 20px;
+    text-align: center;
 }
 
 #restaurantReview {
-    margin-left: 7em;
     font-size: 20px;
 }
 
+for {
+    text-align: center;
+}
+
 section>p {
+    text-align: center;
+}
+
+div {
     text-align: center;
 }
 
@@ -319,10 +355,14 @@ section>p {
     #userReview {
         margin-left: auto;
         margin-right: auto;
+        padding-left: 1em;
     }
     #restaurantReview {
         margin-left: auto;
         margin-right: auto;
+    }
+    div {
+        text-align: center;
     }
     body>header>h1 a {
         font-size: 35px;

@@ -9,12 +9,10 @@
   require_once('../Templates/order.tpl.php');
   require_once('../Classes/order.class.php');
   require_once('../Classes/dish.class.php');
-  require_once('../Classes/menu.class.php');
-  require_once('../Classes/restaurant.class.php');
 
   $db = getDatabaseConnection('sqlite:../Database/database.db');
   $orders = Order::getOrders($db, intval(Order::countOrders($db)));
   drawHeader($session);
-  drawCart($orders, intval($_GET['id']));
+  drawCart($orders);
   drawFooter(); 
 ?> 

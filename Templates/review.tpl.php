@@ -2,9 +2,20 @@
 
 declare(strict_types=1); ?>
 
-<?php function drawReview(Restaurant $restaurant)
+<?php function drawReview(Restaurant $restaurant, array $reviews)
 { ?>
-  <h2>Send Your Feedback!</h2>   
+  <h2>Send Your Feedback!</h2>
+        <?php
+        $count = 0;
+        if(sizeof($reviews) > 0) {?>
+        <div>
+        <?php for($i = 0; $i < sizeof($reviews); $i++){
+          $count += $reviews[$i]->score;
+        }
+        $average = round($count/(sizeof($reviews)),2) ?>&#11088;
+        <?= $average ?><?="("?><?= sizeof($reviews) ?><?=")"?>
+        </div>
+        <?php } ?>
         <div class="rate"> 
             <h2>What do you think about <a href="../Pages/restaurant.php?id=<?=$restaurant->id?>"><span id=reviewRestaurantName><?= "$restaurant->name" ?></span></a> restaurant?</h2>
             <h3>Rate:</h3>
@@ -21,10 +32,8 @@ declare(strict_types=1); ?>
               <button type="submit" id="submitReview">Submit</button>
             </form>
         </div>
-    <script src = "https://code.jquery.com/jquery-3.5.1.min.js" > </script>
 
 <?php } ?>
-
 
 <?php function drawReviews(PDO $db,array $reviews)
 { ?>
@@ -32,6 +41,7 @@ declare(strict_types=1); ?>
     <?php 
     require_once('../Classes/user.class.php'); 
     $count = 0;
+    if(sizeof($reviews) > 0) {
      for($i = 0; $i < sizeof($reviews); $i++){ 
       $user = User::getUser($db,$reviews[$i]->userId);
       ?>
@@ -45,19 +55,11 @@ declare(strict_types=1); ?>
             <?= $reviews[$i]->reviewText?>
           </p>
         </div>
-          
-       <?php } ?>
-       <?php if(sizeof($reviews) > 0) { ?>
-          <div id="restaurantReview">
-            <?php 
-            $average = round($count/(sizeof($reviews)),2) ?>
-            &#11088;<?= $average ?>
-            <?="("?><?= sizeof($reviews) ?><?=")"?>
-          </div>
-       <?php } 
-       else { ?>
-        <div id="userReview">
-          <p>There are no reviews yet &#128542;</p>
-       </div>
-        <?php } ?>
-      <?php } ?>
+        <?php }
+        } 
+       else{ ?>
+      <div id="userReview2">
+        <p>There are no reviews yet &#128542;</p>
+     </div>
+  <?php } ?>
+<?php } ?>
