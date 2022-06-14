@@ -8,6 +8,7 @@ h2>a {
 
 main {
     background-color: #438d7f2f;
+    padding-bottom: 2em;
     z-index: -1;
 }
 
@@ -136,6 +137,10 @@ img {
     content: " €";
 }
 
+#ordersTable {
+    margin: 3em auto;
+}
+
 button {
     background-color: #757474;
     transition-duration: 0.4s;
@@ -156,7 +161,31 @@ button:hover {
     position: fixed;
     bottom: 0.5em;
     right: 1em;
-    filter: brightness(85%) sepia(60%);
+    filter: brightness(80%) sepia(60%);
+}
+
+#reviewIcon {
+    width: 6.8em;
+    height: auto;
+    position: fixed;
+    bottom: 6.9em;
+    right: 0.7em;
+    filter: invert(10%);
+}
+
+#adminIcon {
+    width: 5.9em;
+    height: auto;
+    position: fixed;
+    bottom: 0.5em;
+    left: 0.7em;
+    filter: sepia(30%);
+}
+
+#cartIcon:hover,
+#reviewIcon:hover,
+#adminIcon:hover {
+    transform: scale(110%);
 }
 
 #logo {
@@ -229,6 +258,7 @@ header {
 footer {
     padding: 1em;
     margin-top: 1em;
+    text-align: center;
     background-color: #438D80;
     color: white;
 }
@@ -242,6 +272,26 @@ footer {
 .home {
     width: 10%;
     height: auto;
+}
+
+.rate {
+    text-align: center;
+}
+
+#reviewRestaurantName,
+#reviewUsername {
+    color: #757474;
+    font-weight: bold;
+}
+
+#userReview {
+    margin-left: 7em;
+    font-size: 20px;
+}
+
+#restaurantReview {
+    margin-left: 7em;
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 540px) {

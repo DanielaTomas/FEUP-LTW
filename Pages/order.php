@@ -14,8 +14,7 @@
 
   $db = getDatabaseConnection('sqlite:../Database/database.db');
   $orders = Order::getOrders($db, intval(Order::countOrders($db)));
-
   drawHeader($session);
-  drawCart($orders);
+  drawCart($orders, intval($_GET['id']));
   drawFooter(); 
 ?> 

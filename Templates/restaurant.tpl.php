@@ -13,8 +13,8 @@
   </section>
 <?php } ?>
 
-<?php function drawRestaurant(string $restaurantName, array $menus, array $dishes) { ?>
-  <h2><?=$restaurantName?></h2>
+<?php function drawRestaurant(Session $session, Restaurant $restaurant, array $menus, array $dishes) { ?>
+  <h2><?=$restaurant->name?></h2>
   <section id="menus">
     <?php foreach ($menus as $menu) { ?>
     <article>
@@ -30,4 +30,9 @@
     </article>
     <?php } ?>
    </section> 
+   <?php 
+   $user = $session::getUsername(); 
+    if($user) { ?>
+   <a href="../Pages/review.php?id=<?=$restaurant->id?>"><img id="reviewIcon" src="../Docs/review.png"></a> 
+   <?php } ?>
 <?php } ?>

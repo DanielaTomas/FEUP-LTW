@@ -26,5 +26,8 @@ if($user)
 {
      Order::addOrder($db,intval($_GET['id']),"Pending",$restaurant->id,intval($session::getId()),intval($_GET['id']));  
 }
+else{
+     header('Location: info.php');
+}
 
 ?>

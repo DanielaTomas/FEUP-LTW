@@ -17,7 +17,8 @@
 * [profile.php](Pages/profile.php)
 * [register.php](Pages/register.php)
 * [admin.php](Pages/admin.php)
-* [index.php](Pages/index.php)
+* [adminoperation.php](Pages/adminoperation.php)
+* [info.php](Pages/info.php)
 
 ## Templates
 
@@ -26,13 +27,21 @@
 * [dish.tpl.php](Templates/dish.tpl.php)
 * [user.tpl.php](Templates/user.tpl.php)
 * [order.tpl.php](Templates/order.tpl.php)
+* [review.tpl.php](Templates/review.tpl.php)
+* [admin.tpl.php](Templates/admin.tpl.php)
+
 
 ## Classes
 
 * [restaurant.class.php](Classes/restaurant.class.php)
+* [session.class.php](Classes/session.class.php)
 * [menu.class.php](Classes/menu.class.php)
 * [dish.class.php](Classes/dish.class.php)
 * [user.class.php](Classes/user.class.php)
+* [order.class.php](Classes/order.class.php)
+* [review.class.php](Classes/review.class.php)
+* [admin.class.php](Classes/admin.class.php)
+
 
 ## Actions
 
@@ -41,6 +50,8 @@
 * [action_logout.php](Actions/action_logout.php)
 * [action_register.php](Actions/action_register.php)
 * [action_delete_order.php](Actions/action_delete_order.php)
+* [action_admin.php](Actions/action_admin.php)
+
 
 ## Database
 
@@ -48,7 +59,9 @@
 * [database.sql](Database/database.sql)
 
 ## API
+
 * [restaurants.api.php](Api/restaurants.api.php)
+* [saveReview.api.php](Api/saveReview.api.php)
 
 ## CSS
 

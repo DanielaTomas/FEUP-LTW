@@ -7,7 +7,10 @@
   require_once('../Database/connection.db.php');
   require_once('../Classes/order.class.php');
   $db = getDatabaseConnection('sqlite:../Database/database.db');
-  Order::removeOrder($db, intval($_GET['orderid']));
+  $id = intval($_GET['orderid']);
+  $quantities = $_GET['quantity'];
+  Order::removeOrder($db, $id);
+
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

@@ -41,8 +41,11 @@
     }
 
     static function removeOrder(PDO $db, int $id){
-      $stmt = $db->prepare('DELETE from Orders WHERE OrderId = ?');
-
+      $stmt = $db->prepare('DELETE FROM Orders WHERE OrderId = ?');
+      $stmt->execute(array($id));
+      $stmt = $db->prepare('DELETE FROM QuantityOrder WHERE orderid = ?');
+      $stmt->execute(array($id));
+      $stmt = $db->prepare('DELETE FROM DishOrder WHERE OrderId = ?');
       $stmt->execute(array($id));
     }
 
@@ -87,5 +90,21 @@
       $Dish['DishPhoto']
     );
   }
+
+  static function addquantity(PDO $db, int $id, int $quantity){
+    $stmt = $db->prepare('INSERT INTO QuantityOrder(orderid,quantity) VALUES (?, ?)');
+    $stmt->execute(array($id, $quantity));
   }
+
+  static function getallquantities(PDO $db){
+    $stmt = $db->prepare('SELECT quantity FROM QuantityOrder');
+      $stmt->execute(array());
+  
+      $quantities = [];
+      while ($quantityorder = $stmt->fetch()) {
+        $quantities[] = intval($quantityorder['quantity']);
+      }
+      return $quantities;
+  }
+}
 ?>

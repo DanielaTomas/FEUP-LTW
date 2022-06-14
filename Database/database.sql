@@ -2,6 +2,7 @@
 --.headers on
 --Pragma Foreign_Keys = on;
 
+drop table if exists QuantityOrder;
 drop table if exists PromotionAdmin;
 drop table if exists DishOrder;
 drop table if exists RestaurantMenu;
@@ -59,7 +60,9 @@ create table Review(
     Score float constraint score_c CHECK(Score >= 0 and Score <= 5),
     ReviewText varchar(250),
     RestaurantId int NOT NULL references Restaurant ON DELETE CASCADE
-                                                    ON UPDATE CASCADE          
+                                                    ON UPDATE CASCADE,
+    UserId int NOT NULL references Users ON DELETE CASCADE
+                                         ON UPDATE CASCADE           
 );
 
 create table Comment(
@@ -91,7 +94,6 @@ create table Dish(
     Price float NOT NULL
                 CHECK(price >= 0),          
     DishDescription varchar(150) NOT NULL,
-    Photo text,
     PromotionId int references Promotion ON DELETE CASCADE
                                          ON UPDATE CASCADE,  
     MenuId int NOT NULL references Menu ON DELETE CASCADE
@@ -123,6 +125,12 @@ create table PromotionAdmin(
     UserId int NOT NULL references Administrator ON DELETE CASCADE
                                                  ON UPDATE CASCADE,  
     PRIMARY KEY (PromotionId, UserId)
+);
+
+create table QuantityOrder(
+    quantity int NOT NULL,
+    orderid int NOT NULL,
+    PRIMARY KEY (orderid, quantity)
 );
 
 -- Populate Tables --
@@ -966,13 +974,21 @@ insert into RestaurantMenu(RestaurantId,MenuId) values (020,92); -- DESSERT --
 -- Users (testes) --
 insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (1, 'Henrique Vicente', 'Hacker', '2d7cd852faf790678785453124f3b4f5d5d25860', 'rua teste 1', 936108692, 1);
 insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (2, 'Daniela Tomás', 'Daniela', '2d7cd852faf790678785453124f3b4f5d5d25860', 'rua teste 2', 912345678, 2);
+insert into Users(UserId, FirstLastName, Username, Password, UserAddress, PhoneNumber, RestaurantId) values (3, 'Teste Testado', 'Teste', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'rua teste 3', 987654321, 3);
 
 
 -- Orders --
-insert into Orders(OrderId,OrderStatus,RestaurantId,UserId) values (1,"Pendente",1,1);
+--insert into Orders(OrderId,OrderStatus,RestaurantId,UserId) values (1,"Pendente",1,1);
 
 -- DishOrders --
-insert into DishOrder(DishId,OrderId) values (1,1);
+--insert into DishOrder(DishId,OrderId) values (1,1);
 
 -- Admin --
 insert into Administrator(UserId)values(1);
+insert into Administrator(UserId)values(2);
+
+-- Reviews --
+
+insert into Review(ReviewId,Score,ReviewText,RestaurantId,UserId) values (1,5,"Muito bom!",1,1);    
+insert into Review(ReviewId,Score,ReviewText,RestaurantId,UserId) values (2,4,"Good :)",1,2);        
+insert into Review(ReviewId,Score,ReviewText,RestaurantId,UserId) values (3,2,"Não gostei",1,3);     

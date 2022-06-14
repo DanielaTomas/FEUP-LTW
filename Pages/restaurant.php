@@ -16,17 +16,12 @@ $db = getDatabaseConnection('sqlite:../Database/database.db');
 $restaurant = Restaurant::getRestaurant($db, intval($_GET['id']));
 $menus = Menu::getRestaurantMenus($db, $restaurant->id);
 $user = $session::getUsername();
-if($user){
 drawHeader($session);
 $dishes=array();
 for($i = 1; $i < Menu::countMenu($db); $i++){
     array_push($dishes, Dish::getMenuDishes($db, $i));
 }
-drawRestaurant($restaurant->name, $menus, $dishes);
+drawRestaurant($session,$restaurant, $menus, $dishes);
 drawFooter();
-}
-else{
-    header('Location: info.php');
-}
 
 ?>

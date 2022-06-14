@@ -45,3 +45,39 @@ function deleteRow(r) {
     var i = r.parentNode.parentNode.rowIndex
     document.getElementById("ordersTable").deleteRow(i)
 }
+
+//---------------------------------------------------------------
+/*function getReview() {
+    document.getElementById('score').value = "<?= $_GET['score'];?>";
+}*/
+
+$(document).ready(function() {
+    $('#submitReview').on('click', function() {
+        $("#submitReview").attr("disabled", "disabled");
+        var score = $('#score').val();
+        var comment = $('#reviewText').val();
+        $.ajax({
+            url: "../Api/saveReview.api.php",
+            type: "POST",
+            data: {
+                score: score,
+                comment: comment
+            },
+            cache: false,
+            success: function(response) {
+                var res = JSON.parse(response);
+                console.log(res);
+                /*  if (res.statusCode == 200) {
+                      $("#submitReview").removeAttr("disabled")
+                      $('#reviewForm').find('textarea').val('')
+                          //$("#success").show();
+                          //$('#success').html('Your review was submitted with success!');
+                  } else if (res.statusCode == 201) {
+                      alert("Error occured!")
+                  }*/
+
+            }
+        });
+
+    });
+});

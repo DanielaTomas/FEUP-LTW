@@ -1,4 +1,5 @@
-<?php declare(strict_types = 1); ?>
+<?php declare(strict_types = 1); 
+?>
 
 <?php function drawHeader(Session $session) { ?>
 <!DOCTYPE html>
@@ -28,6 +29,12 @@
       <?php } ?>
     </section>
     <main>
+    <?php $user = $session::getUsername(); 
+    if($user) {?>
+     <a href="../Pages/order.php"><img id="cartIcon" src="../Docs/cart.png"></a>
+     <a href="../Pages/admin.php"><img id="adminIcon" src="../Docs/admin.png"></a>
+
+    <?php } ?>
 <?php } ?>
 
 <?php function drawLoginForm(string $path) { ?>
@@ -47,7 +54,6 @@
 <?php } ?>
 
 <?php function drawFooter() { ?>
-    <a href="../Pages/order.php"><img id="cartIcon" src="../Docs/cart.png"></a>
     </main>
 
     <footer>

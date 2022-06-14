@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -10,7 +11,9 @@
 
   <body>
     <div id = "info">
-      <span>&#9888;</span><p>You must be Logged in. If you don't have an account, you must Register.</p>
+    <?php
+    echo "Operation completed with success"
+    ?>
       <form action="index.php" method="post">
         <button type="submit" class="home">Home</button>
       </form>
